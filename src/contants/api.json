@@ -1,0 +1,4 @@
+{
+  "detail": "/api/article.json?article=",
+  "about": "/api/about.json"
+}

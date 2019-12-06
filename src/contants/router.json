@@ -1,0 +1,10 @@
+{
+  "HOME": "/",
+  "DETAIL": "/detail",
+  "ARCHIVE": "/archive",
+  "ABOUT": "/about",
+  "TAG": "/tag",
+  "ADMIN": "/admin",
+  "ADMIN_TAG": "/admin/tag",
+  "ADMIN_USER": "/admin/user"
+}
