@@ -9,7 +9,7 @@ import EcoOutlinedIcon from '@material-ui/icons/EcoOutlined';
 import AcUnitIcon from '@material-ui/icons/AcUnit';
 import LocalFloristIcon from '@material-ui/icons/LocalFlorist';
 import StyledTreeItem from './StyledTreeItem';
-
+import api from '../contants/api'
 const useStyles = makeStyles({
   root: {
     height: 264,
@@ -20,8 +20,7 @@ const useStyles = makeStyles({
 
 export default function Archive() {
   const classes = useStyles();
-  const URL = '/api/archive/';
-  const data = useRequests(URL);
+  const data = useRequests(api.archive);
   return (
     <Grid container justify="center">
       <TreeView
