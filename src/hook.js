@@ -1,25 +1,16 @@
 import {useEffect, useState} from "react";
-import axios from "axios";
+import axios from "./helpers/http";
 
-export function useRequests(URL) {
-  URL = 'http://127.0.0.1:5000' + URL;
-  const [state, setState] = useState('');
+export function useRequests(init, url, params) {
+  const [state, setState] = useState(init);
   useEffect(() => {
-    const source = axios.CancelToken.source();
-    const requests = async () => {
-      await axios.get(URL, {
-        cancelToken: source.token,
-      })
-        .then(res => {
-          setState(res.data);
-        });
-    };
-    requests().catch(err => {
-      console.log("error", err.message);
+    axios.get(url, {
+      params: params
+    }).then(res => {
+      setState(res.data);
+    }).catch(error => {
+      console.log(error);
     });
-    return () => {
-      source.cancel();
-    };
-  }, [URL]);
+  }, [url]);
   return state;
 }

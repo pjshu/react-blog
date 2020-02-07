@@ -1,7 +1,6 @@
 {
-  "detail": "/api/article.json?article=",
-  "about": "/api/user/about/",
-  "archive": "/api/archive/",
-  "post": "/api/posts/",
-  "tag": "/api/tags/"
+  "about": "/user/about",
+  "archive": "/archive",
+  "post": "/post",
+  "tag": "/tags"
 }

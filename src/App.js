@@ -1,12 +1,13 @@
 import React from 'react';
 import Nav from "./components/Nav";
 import Home from './components/Home';
-import Archive from "./components/Archive";
+import Archive from "./components/archive";
 import Tag from "./components/Tag";
 import About from "./components/About";
 import Detail from './components/Detail';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import router from './contants/router';
+import './global.css';
 
 
 function App() {

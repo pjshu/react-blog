@@ -1,10 +1,7 @@
 {
   "HOME": "/",
-  "DETAIL": "/detail",
+  "DETAIL": "/post",
   "ARCHIVE": "/archive",
   "ABOUT": "/about",
-  "TAG": "/tag",
-  "ADMIN": "/admin",
-  "ADMIN_TAG": "/admin/tag",
-  "ADMIN_USER": "/admin/user"
+  "TAG": "/tag"
 }
