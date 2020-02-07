@@ -1,8 +1,8 @@
 import React from 'react';
-import {Button, Container, Grid, Typography} from '@material-ui/core';
+import {Button, Container, Grid, makeStyles, Typography} from '@material-ui/core';
 import {Link} from "react-router-dom";
 import router from '../contants/router';
-import {makeStyles} from "@material-ui/core/styles";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,6 +31,9 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   button: {
+    '&:hover': {
+      background: '#F6F8FC'
+    },
     border: 0
   }
 }));
@@ -64,14 +67,14 @@ function Home() {
             应用场景: 多进程:cpu密集型 多线程:io密集型
           </Typography>
           <Grid>
-            <Link to={`${router.DETAIL}/1`}>
-              <Button
-                variant="outlined"
-                className={classes.button}
-              >
-                阅读全文
-              </Button>
-            </Link>
+            <Button
+              to={`${router.DETAIL}/1`}
+              component={Link}
+              variant="outlined"
+              className={classes.button}
+            >
+              阅读全文
+            </Button>
           </Grid>
         </Grid>
 

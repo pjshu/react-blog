@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from 'react-router-dom';
-import {Grid} from "@material-ui/core";
+import {Container, Grid, makeStyles} from "@material-ui/core";
 import api from '../contants/api';
 import axios from "../helpers/http";
 import 'braft-editor/dist/output.css';
@@ -8,9 +8,17 @@ import BraftEditor from '../config/editorConfig';
 import Prism from "../config/prism";
 import '../config/prism.css';
 import '../config/table.css';
-import {Container} from "@material-ui/core";
+
+const useStyle = makeStyles(theme => ({
+  root: {
+    [theme.breakpoints.down('sm')]: {
+      padding: 6
+    },
+  }
+}));
 
 function Detail() {
+  const classes = useStyle();
   const {id} = useParams();
   const [state, setState] = useState({
     id: '',
@@ -31,15 +39,16 @@ function Detail() {
   }, []);
 
   return (
-    <Container maxWidth={"md"}>
+    <Container maxWidth={"md"} className={classes.root}>
       <Grid container justify="center">
-        <Grid item>
-          <div dangerouslySetInnerHTML={{__html: state.contents}}/>
+        <Grid item style={{maxWidth: '100%'}}>
+          <div style={{maxWidth: '100%'}} dangerouslySetInnerHTML={{__html: state.contents}}/>
         </Grid>
       </Grid>
     </Container>
   );
 }
+
 
 
 export default Detail;

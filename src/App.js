@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from "./components/Nav";
+import Nav from "./components/nav";
 import Home from './components/Home';
 import Archive from "./components/archive";
 import Tag from "./components/Tag";
@@ -8,6 +8,7 @@ import Detail from './components/Detail';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import router from './contants/router';
 import './global.css';
+import {hot} from 'react-hot-loader/root';
 
 
 function App() {
@@ -25,4 +26,5 @@ function App() {
   );
 }
 
-export default App;
+export default process.env.NODE_ENV === "development" ? hot(App) : App;
+

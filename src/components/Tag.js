@@ -1,8 +1,7 @@
 import React from 'react';
 import {useRequests} from '../hook';
-import Grid from "@material-ui/core/Grid";
 import api from '../contants/api';
-import {Container} from "@material-ui/core";
+import {Container, Grid} from "@material-ui/core";
 
 function Tag() {
   const data = useRequests([], api.tag);

@@ -2,14 +2,18 @@ import React from "react";
 import TreeItem from '@material-ui/lab/TreeItem';
 import {Box, Grid, makeStyles, Typography} from "@material-ui/core";
 
-const useStyle = makeStyles((theme) => ({
+const useStyle = makeStyles({
   root: {
     '&:focus > $content': {
-      backgroundColor: '#eee',
+      backgroundColor: '#F6F8FC',
       color: '#eee',
     },
   },
-  content: {},
+  content: {
+    '&:hover': {
+      backgroundColor: '#F6F8FC',
+    }
+  },
   typography: {
     lineHeight: '40px',
     '& > span': {
@@ -17,8 +21,8 @@ const useStyle = makeStyles((theme) => ({
       color: '#393638'
     }
   }
-}));
-export default function StyledTreeItem({labelText, labelInfo, ...other}) {
+});
+export default function TreeItemWrapper({labelText, labelInfo, ...other}) {
   const classes = useStyle();
   return (
     <TreeItem
