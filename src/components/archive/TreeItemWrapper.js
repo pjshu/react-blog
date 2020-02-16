@@ -35,10 +35,10 @@ export default function TreeItemWrapper({labelText, labelInfo, ...other}) {
         <Grid className={classes.root}>
           <Typography className={classes.typography}>
             <Box component={"span"}>
-              {labelText}
+              {labelInfo}
             </Box>
             <Box component={"span"}>
-              {labelInfo}
+              {labelText}
             </Box>
           </Typography>
         </Grid>

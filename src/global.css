@@ -1,9 +1,59 @@
+@font-face {
+    font-family: 'MeriendaOne Regular';
+    src: local('MeriendaOne Regular'), url("fonts/MeriendaOne-Regular.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'Rubik Bold';
+    src: local('Rubik Bold'), url("fonts/Rubik-Bold.woff2") format('woff2');
+}
+
+@font-face {
+    font-family: 'Rubik Regular';
+    src: local('Rubik Regular'), url("fonts/Rubik-Regular.woff2") format('woff2');
+}
+
 html, body, #root {
     height: 100%;
     margin: 0;
     padding: 0;
+    /*background-image: url("./images/sea.jpeg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: 100%;*/
+    /*background-position: right;*/
+    color: #3B454E;
+
 }
 
 a {
     text-decoration: none;
 }
+
+p::selection {
+    /*color: #3B454E;*/
+    /*background: #5AC6D4;*/
+}
+
+p::-moz-selection {
+    /*color: #3B454E;*/
+    /*background: #5AC6D4;*/
+}
+
+
+/* 设置滚动条的样式 */
+/*::-webkit-scrollbar {*/
+/*    width: 10px;*/
+/*}*/
+
+/*!* 滚动槽 *!*/
+/*::-webkit-scrollbar-track {*/
+/*    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);*/
+/*    border-radius: 10px;*/
+/*}*/
+
+/* 滚动条滑块 */
+/*::-webkit-scrollbar-thumb {*/
+/*    border-radius: 10px;*/
+/*    background: linear-gradient(#D09FFE, #FFFFFF);*/
+/*    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);*/
+/*}*/

@@ -2,5 +2,6 @@
   "about": "/user/about",
   "archive": "/archive",
   "post": "/post",
-  "tag": "/tags"
+  "tag": "/tags",
+  "posts": "/posts"
 }

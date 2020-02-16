@@ -1,5 +1,5 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core';
 import {Divider, List, ListItem, ListItemIcon, ListItemText,Avatar} from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import ArchiveIcon from '@material-ui/icons/Archive';

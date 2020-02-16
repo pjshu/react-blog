@@ -22,27 +22,30 @@ function Detail() {
   const {id} = useParams();
   const [state, setState] = useState({
     id: '',
-    contents: '',
+    article: '',
     title: ''
   });
   useEffect(() => {
     axios.get(api.post, {
-      params: {postId: id}
+      params: {id}
     }).then(res => {
       const data = res.data;
-      data.contents = BraftEditor.createEditorState(data.contents).toHTML();
+      data.article = BraftEditor.createEditorState(data.article).toHTML();
       setState(data);
       Prism.highlightAll();
     }).catch(error => {
       console.log(error);
     });
-  }, []);
+  }, [id]);
 
   return (
     <Container maxWidth={"md"} className={classes.root}>
       <Grid container justify="center">
+        <Grid>
+          {state.title}
+        </Grid>
         <Grid item style={{maxWidth: '100%'}}>
-          <div style={{maxWidth: '100%'}} dangerouslySetInnerHTML={{__html: state.contents}}/>
+          <div style={{maxWidth: '100%'}} dangerouslySetInnerHTML={{__html: state.article}}/>
         </Grid>
       </Grid>
     </Container>

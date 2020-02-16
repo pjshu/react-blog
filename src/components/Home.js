@@ -1,26 +1,20 @@
-import React from 'react';
-import {Button, Container, Grid, makeStyles, Typography} from '@material-ui/core';
+import React, {useEffect, useState} from 'react';
+import {Button, Chip, Container, Grid, makeStyles, Typography} from '@material-ui/core';
 import {Link} from "react-router-dom";
 import router from '../contants/router';
-
+import {http} from "../hook";
+import api from '../contants/api';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    // background: '#0A0A0A',
+    // color: '#fff',
     '& > *': {
-      '& > :nth-child(1)': {
-        lineHeight: '60px'
-      },
-      '& > :nth-child(2)': {
-        lineHeight: "40px"
-      },
+      height: '100vh',
+      // background: 'linear-gradient(to right bottom, #4C5986, #B9E4EF)',
+      // borderRadius: '8px',
       [theme.breakpoints.down("sm")]: {
         marginBottom: theme.spacing(1),
-        '& > :nth-child(1)': {
-          lineHeight: '40px'
-        },
-        '& > :nth-child(2)': {
-          lineHeight: "30px"
-        }
       },
       [theme.breakpoints.only("sm")]: {
         marginBottom: theme.spacing(6),
@@ -30,54 +24,153 @@ const useStyles = makeStyles((theme) => ({
       },
     }
   },
+  title: {
+    lineHeight: '60px',
+    fontSize: 50,
+    fontFamily: "Rubik Regular",
+    fontWeight: 'bold',
+
+    background: 'linear-gradient(135deg, #7EAAFC, #726EE2)',
+    WebkitBackgroundClip: 'text',
+    color: 'transparent'
+  },
   button: {
-    '&:hover': {
-      background: '#F6F8FC'
+    fontSize: 18,
+    border: 0,
+
+    [theme.breakpoints.down("sm")]: {
+      lineHeight: '40px',
     },
-    border: 0
+    borderBottom: "3px solid rgb(212, 212, 212)",
+    '&:hover': {
+      background: 'linear-gradient(135deg, #8DC5FA, #6C7FF0)',
+      WebkitBackgroundClip: 'text',
+      color: 'transparent',
+    },
+  },
+  articleInfo: {
+    display: 'flex',
+    direction: 'row',
+    '& > *': {
+      margin: '20px 20px 10px 0'
+    }
+  },
+  tags: {
+    ' & > *': {
+      // border: '1px solid',
+      margin: '10px 20px 20px 0',
+      // background:'linear-gradient(to right bottom, #56C6E4, #6995E6)',
+      '&:hover': {
+        // boxShadow: '1px 2px 2px 2px #75C1D1',
+        // background: '#75C1D1'
+        background: 'linear-gradient(135deg, #8DC5FA, #6C7FF0)',
+        WebkitBackgroundClip: 'text',
+        color: 'transparent'
+      }
+    }
+  },
+  article: {
+    lineHeight: "40px",
+    [theme.breakpoints.down("sm")]: {
+      lineHeight: "30px"
+    },
+  },
+  readMore: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+
+    // background: 'linear-gradient(135deg, #8DC5FA, #6C7FF0)',
+    // WebkitBackgroundClip: 'text',
+    // color: 'transparent'
   }
 }));
 
+
 function Home() {
   const classes = useStyles();
+  const [state, setState] = useState({
+    current_page: 1,
+    content: []
+  });
+
+  useEffect(() => {
+    http.get(api.posts, setState);
+  }, []);
+
+  const handleOnNextPage = () => {
+    const handleResult = (res) => {
+      setState({
+        current_page: state.current_page,
+        content: state.content.concat(res.content)
+      });
+    };
+    http.get(api.posts, handleResult, {current_page: 1});
+  };
+
   return (
     <Container maxWidth={"lg"}>
-      <Grid container direction="column" alignItems="center" className={classes.root}>
-        <Grid
-          sm={12}
-          md={10}
-          item
-          container
-          alignItems={"center"}
-          direction={"column"}
-        >
-          <Typography
-            variant="h5"
-            component="h3"
-            align="center"
-          >
-            article title
-          </Typography>
-          <Typography
-            component="p"
-          >
-            &nbsp;&nbsp;进程: 进程是一个实体。每个进程都有自己的地址空间(CPU分配) 是具有一定独立功能的程序关于某个数据集合上的一次运行活动,进程是系统进行资源分配和调度的一个独立单位. 线程:
-            线程是进程中的一个实体
-            一个进程内部可能包含了很多顺序执行流，每个顺序执行流就是一个线程
-            应用场景: 多进程:cpu密集型 多线程:io密集型
-          </Typography>
-          <Grid>
-            <Button
-              to={`${router.DETAIL}/1`}
-              component={Link}
-              variant="outlined"
-              className={classes.button}
+      <Grid container direction="column" alignItems="flex-start" className={classes.root}>
+        {
+          state.content.map(item => (
+            <Grid
+              key={item.id}
+              xs={12}
+              sm={8}
+              item
+              container
+              alignItems={"flex-start"}
+              direction={"column"}
             >
-              阅读全文
-            </Button>
-          </Grid>
-        </Grid>
+              <Typography
+                className={classes.title}
+                component="h3"
+                align="left">
+                {item.title}还行还行还行还行还行还行
+              </Typography>
 
+              <Grid className={classes.articleInfo}>
+                <Typography
+                  component="h4"
+                  align="left">
+                  2019/10/2 12:50
+                </Typography>
+
+                <Grid>
+                  0评论
+                </Grid>
+              </Grid>
+
+              <Grid className={classes.tags}>
+                <Chip label="tag1" variant="outlined"/>
+                <Chip label="tag2" variant="outlined"/>
+              </Grid>
+
+              <Typography
+                component="p"
+                className={classes.article}>
+                {item.article}
+              </Typography>
+
+              <Grid>
+                <Button
+                  to={`${router.DETAIL}/${item.id}`}
+                  component={Link}
+                  variant="outlined"
+                  className={classes.button}
+                >
+                  阅读全文
+                </Button>
+              </Grid>
+
+            </Grid>
+          ))
+        }
+        <Grid className={classes.readMore}>
+          <Button variant="outlined" onClick={handleOnNextPage}>
+            加载更多
+          </Button>
+        </Grid>
       </Grid>
     </Container>
   );
