@@ -5,6 +5,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SideList from './SideList';
 
 const useStyles = makeStyles({
+
   expansionButton: {
     '&:hover': {
       background: '#F6F8FC'
@@ -27,7 +28,11 @@ export default function Nav() {
 
 
   return (
-    <div>
+    <div style={{
+      position: 'absolute',
+      left: '0',
+      right: '0',
+    }}>
       <Button onClick={toggleDrawer(true)} className={classes.expansionButton}>
         {
           matches ? <FingerprintIcon/> : <MenuIcon/>

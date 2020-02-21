@@ -3,5 +3,6 @@
   "DETAIL": "/post",
   "ARCHIVE": "/archive",
   "ABOUT": "/about",
-  "TAG": "/tag"
+  "TAG": "/tag",
+  "ARTICLES": "/articles"
 }

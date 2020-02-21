@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import Collapse from '@material-ui/core/Collapse';
-
+import {Collapse,Container} from '@material-ui/core';
 
 function TreeItem({year, date, title}) {
   const [hidden, setHidden] = useState(false);
@@ -27,7 +26,7 @@ function TreeItem({year, date, title}) {
 
 function Test() {
   return (
-    <div>
+    <Container maxWidth={"md"}  style={{padding:'40px'}}>
       <ul>
         <TreeItem {...{year: '2019-2', date: '1', title: '标题'}}/>
         <TreeItem {...{year: '2019-2', date: '1', title: '标题'}}/>
@@ -35,7 +34,7 @@ function Test() {
         <TreeItem {...{year: '2019-2', date: '1', title: '标题'}}/>
         <TreeItem {...{year: '2019-2', date: '1', title: '标题'}}/>
       </ul>
-    </div>
+    </Container>
   );
 }
 

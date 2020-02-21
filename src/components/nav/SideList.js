@@ -1,6 +1,5 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core';
-import {Divider, List, ListItem, ListItemIcon, ListItemText,Avatar} from '@material-ui/core';
+import {Avatar, Divider, List, ListItem, ListItemIcon, ListItemText, makeStyles} from '@material-ui/core';
 import HomeIcon from '@material-ui/icons/Home';
 import ArchiveIcon from '@material-ui/icons/Archive';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
@@ -61,6 +60,7 @@ const SideList = ({toggleDrawer}) => {
         {
           [
             {'icon': <HomeIcon/>, router: router.HOME, primary: 'Home'},
+            {'icon': <HomeIcon/>, router: router.ARTICLES, primary: "Article"},
             {'icon': <LoyaltyIcon/>, router: router.TAG, primary: 'Tags'},
             {'icon': <ArchiveIcon/>, router: router.ARCHIVE, primary: 'Archive'},
             {'icon': <MailOutlineIcon/>, router: router.ABOUT, primary: 'About'},

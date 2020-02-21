@@ -17,12 +17,13 @@ html, body, #root {
     height: 100%;
     margin: 0;
     padding: 0;
+    -webkit-font-smoothing:antialiased;
     /*background-image: url("./images/sea.jpeg");*/
     /*background-repeat: no-repeat;*/
     /*background-size: 100%;*/
     /*background-position: right;*/
     color: #3B454E;
-
+    font-family: Rubik Regular, serif;
 }
 
 a {
