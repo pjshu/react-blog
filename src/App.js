@@ -1,32 +1,35 @@
 import React from 'react';
-import Articles from './components/Articles';
-import Test from './components/archive/Test';
+import Articles from './components/articleList';
+import Archive from './components/Archive';
 import Tag from "./components/tag/Tags";
 import About from "./components/About";
-import Detail from './components/Detail';
+import Article from './components/Article';
 import Home from './components/home/Home';
-import Nav from "./components/nav";
+// import Nav from "./components/nav";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import router from './contants/router';
 import './global.css';
-import Test2 from './components/Test'
+import SideBar from "./components/SideBar";
+import TopBar from "./components/topBar";
 
 function App() {
   return (
     <Router>
+      <TopBar/>
+      <SideBar/>
       <Switch>
         <Route path={router.HOME} exact><Home/></Route>
         <Route>
-          <Nav/>
           <Switch>
-            <Route path={router.ARCHIVE}><Test/></Route>
+            <Route path={router.ARCHIVE}><Archive/></Route>
             <Route path={router.TAG}><Tag/></Route>
             <Route path={router.ABOUT}><About/></Route>
-            <Route path={`${router.DETAIL}/:id`}><Detail/></Route>
+            <Route path={`${router.DETAIL}/:id`}><Article/></Route>
             <Route path={router.ARTICLES} exact><Articles/></Route>
           </Switch>
         </Route>
       </Switch>
+
     </Router>
   );
 }

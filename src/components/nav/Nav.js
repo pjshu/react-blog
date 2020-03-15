@@ -1,15 +1,25 @@
 import React, {useState} from 'react';
-import {Button, Drawer, makeStyles, useMediaQuery, useTheme} from '@material-ui/core';
+import {Button, Drawer, makeStyles} from '@material-ui/core';
 import FingerprintIcon from '@material-ui/icons/Fingerprint';
-import MenuIcon from '@material-ui/icons/Menu';
 import SideList from './SideList';
 
 const useStyles = makeStyles({
-
-  expansionButton: {
-    '&:hover': {
-      background: '#F6F8FC'
-    },
+  root: {
+    zIndex: '10',
+    position: 'absolute',
+    right: 10,
+    top: 10,
+  },
+  FingerprintIcon: {
+    fontSize: 40,
+    color: '#CB88D1',
+  },
+  drawerPaper: {
+    boxShadow:'0 0 0',
+    backgroundColor: 'transparent'
+  },
+  paperAnchorDockedLeft: {
+    borderRight: 0
   }
 });
 
@@ -17,28 +27,29 @@ const useStyles = makeStyles({
 export default function Nav() {
   const classes = useStyles();
   const [state, setState] = useState(false);
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.only('xs'));
-  const toggleDrawer = (open) => event => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
-    }
-    setState(open);
+  // const toggleDrawer = (open) => event => {
+  //   setState(open);
+  // };
+  const toggleDrawer = () => {
+    setState(!state);
   };
 
-
   return (
-    <div style={{
-      position: 'absolute',
-      left: '0',
-      right: '0',
-    }}>
-      <Button onClick={toggleDrawer(true)} className={classes.expansionButton}>
-        {
-          matches ? <FingerprintIcon/> : <MenuIcon/>
-        }
+    <div className={classes.root}>
+      <Button onClick={toggleDrawer}>
+        <FingerprintIcon className={classes.FingerprintIcon}/>
       </Button>
-      <Drawer open={state} onClose={toggleDrawer(false)}>
+      <Drawer
+        classes={{
+          paper: classes.drawerPaper,
+          paperAnchorDockedLeft: classes.paperAnchorDockedLeft,
+        }}
+        // variant="persistent"
+        anchor="left"
+        open={state}
+        // onClose={toggleDrawer(false)}
+        onClose={toggleDrawer}
+      >
         <SideList {...{toggleDrawer}}/>
       </Drawer>
     </div>
