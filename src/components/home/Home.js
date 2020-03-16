@@ -12,8 +12,14 @@ import Slide from '@material-ui/core/Slide';
 
 const useStyle = makeStyles(theme => ({
   root: {
-    height: '100%',
+    height: '100vh',
     position: "relative",
+    [theme.breakpoints.down("xs")]: {
+      backgroundSize: 0,
+    },
+    [theme.breakpoints.only("sm")]: {
+      backgroundSize: '100px, 100px, 200px, 150px,100px',
+    },
     background: `
     url(${purpleBg}) no-repeat fixed left -10px top -40px,
     url(${blueBg}) no-repeat fixed center top -40px,
@@ -21,12 +27,6 @@ const useStyle = makeStyles(theme => ({
     url(${blueBg}) no-repeat fixed right -20px bottom -50px,
     url(${purpleBg}) no-repeat fixed center bottom -40px`,
     backgroundSize: '150px, 100px, 300px, 200px, 100px',
-    [theme.breakpoints.down("xs")]: {
-      backgroundSize: 0,
-    },
-    [theme.breakpoints.only("sm")]: {
-      backgroundSize: '100px, 100px, 200px, 150px,100px',
-    },
   },
   infoWrapper: {
     display: 'flex',
@@ -76,7 +76,6 @@ const useStyle = makeStyles(theme => ({
       display: 'none'
     },
     [theme.breakpoints.only("sm")]: {
-      right: '-5vw',
       '& > img': {
         height: '400px'
       },
@@ -94,8 +93,10 @@ function Home() {
   const [inOrOut, setInOrOut] = useState(true);
   return (
     <Grid onWheel={e => {
+      console.log(e.nativeEvent);
       // console.log(e.nativeEvent.deltaY)
-      if (e.nativeEvent.deltaY > 50) {
+      if (e.nativeEvent.deltaY > 0) {
+        console.log(e.nativeEvent);
         setInOrOut(false);
         setTimeout(() => {
           history.push(router.ARTICLES);
@@ -126,12 +127,12 @@ function Home() {
             <SquareBtn label={"关于我"} to={router.ABOUT}/>
           </Grid>
         </Slide>
-        {/*<ExpandMore*/}
-        {/*  style={{*/}
-        {/*    display: inOrOut ? '' : 'none'*/}
-        {/*  }}*/}
-        {/*  absolute {...{to: router.ARTICLES}}*/}
-        {/*/>*/}
+        <ExpandMore
+          style={{
+            display: inOrOut ? '' : 'none'
+          }}
+          absolute {...{to: router.ARTICLES}}
+        />
         <Grid className={classes.bgPic}>
           <Slide timeout={1000} direction={'down'} in={inOrOut} mountOnEnter unmountOnExit>
             <img src={icon} alt=""/>

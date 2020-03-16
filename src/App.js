@@ -3,7 +3,7 @@ import Articles from './components/articleList';
 import Archive from './components/Archive';
 import Tag from "./components/tag/Tags";
 import About from "./components/About";
-import Article from './components/Article';
+import Article from './components/article';
 import Home from './components/home/Home';
 // import Nav from "./components/nav";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
@@ -11,10 +11,13 @@ import router from './contants/router';
 import './global.css';
 import SideBar from "./components/SideBar";
 import TopBar from "./components/topBar";
+import CssBaseline from '@material-ui/core/CssBaseline';
+
 
 function App() {
   return (
     <Router>
+      <CssBaseline/>
       <TopBar/>
       <SideBar/>
       <Switch>

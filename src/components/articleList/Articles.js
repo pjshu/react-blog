@@ -10,13 +10,26 @@ import UnderlineBtn from '../button/UnderlineBtn';
 import purpleBg from "../../icons/purpleBg.svg";
 import blueBg from "../../icons/blueBg.svg";
 import Slide from "@material-ui/core/Slide";
+import Paper from '@material-ui/core/Paper';
+import Box from '@material-ui/core/Box';
+
+import Fade from "@material-ui/core/Fade";
 // import purpleBg from '../../icons/purpleBg.svg';
 // import blueBg from '../../icons/blueBg.svg';
 import VisibilitySensor from 'react-visibility-sensor';
+import Home from "../home/Home";
+import Grow from '@material-ui/core/Grow';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: '20px 30px 20px 30px',
+    [theme.breakpoints.down("xs")]: {
+      backgroundSize: 0,
+    },
+    [theme.breakpoints.only("sm")]: {
+      backgroundSize: '100px, 100px, 200px, 150px,100px',
+    },
     background: `
     url(${purpleBg}) no-repeat fixed left -10px top -40px,
     url(${blueBg}) no-repeat fixed center top -40px,
@@ -24,12 +37,6 @@ const useStyles = makeStyles((theme) => ({
     url(${blueBg}) no-repeat fixed right -20px bottom -50px,
     url(${purpleBg}) no-repeat fixed center bottom -40px`,
     backgroundSize: '150px, 100px, 300px, 200px, 100px',
-    [theme.breakpoints.down("xs")]: {
-      backgroundSize: 0,
-    },
-    [theme.breakpoints.only("sm")]: {
-      backgroundSize: '100px, 100px, 200px, 150px,100px',
-    },
   },
 
   title: {
@@ -96,12 +103,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function Articles() {
+function Articles({state, handleOnNextPage}) {
   const classes = useStyles();
-  const [state, setState] = useState({
-    current_page: 1,
-    content: []
-  });
   // TODO : bug
   // const [navHidden, setNavHidden] = useState(false);
   // const handleScroll = (e) => {
@@ -117,19 +120,6 @@ function Articles() {
   //   }
   // };
 
-  useEffect(() => {
-    http.get(api.posts, setState);
-  }, []);
-
-  const handleOnNextPage = () => {
-    const handleResult = (res) => {
-      setState({
-        current_page: state.current_page,
-        content: state.content.concat(res.content)
-      });
-    };
-    http.get(api.posts, handleResult, {current_page: 1});
-  };
 
   const handleScroll = (e) => {
     // console.log(e);
@@ -149,15 +139,16 @@ function Articles() {
           }
 
         </Grid>
-
         <Grid item className={classes.personInfo}>
           <PersonInfo/>
           <TagList/>
         </Grid>
       </Grid>
-      {/*<Grid className={classes.readMore}>*/}
-      {/*  <ExpandMore onClick={handleOnNextPage}/>*/}
-      {/*</Grid>*/}
+      {/*<Fade in={true}>*/}
+      {/*  <Grid className={classes.readMore}>*/}
+      {/*    <ExpandMore onClick={handleOnNextPage}/>*/}
+      {/*  </Grid>*/}
+      {/*</Fade>*/}
     </div>
   );
 }
@@ -165,14 +156,15 @@ function Articles() {
 
 const Article = ({item, classes, index}) => {
   const [inOrOut, setInOrOut] = useState(true);
-  console.log(index);
+  const [hover, setHover] = useState(false);
+
   return (
     <Grid
       onWheel={e => {
         console.log(e.nativeEvent.deltaY);
       }}
       style={{
-        marginTop: '100px',
+        // marginTop: '100px',
         // height: '100vh'
         minHeight: '700px'
       }}
@@ -182,7 +174,18 @@ const Article = ({item, classes, index}) => {
       direction={"column"}
     >
       {/*<Fade collapsedHeight={200} in={isVisible} mountOnEnter unmountOnExit>*/}
-      <div>
+      <Paper
+        onMouseEnter={() => {
+          setHover(true);
+        }}
+        onMouseLeave={() => {
+          setHover(false);
+        }}
+        boxShadow={hover ? 1 : 8}
+        component={Box}
+        style={{
+          padding: '50px'
+        }}>
         <Slide timeout={1000} direction={'right'} in={true} mountOnEnter unmountOnExit>
           <Typography
             className={classes.title}
@@ -222,7 +225,7 @@ const Article = ({item, classes, index}) => {
             <UnderlineBtn label={"阅读全文"} to={`${router.DETAIL}/${item.id}`}/>
           </Grid>
         </Slide>
-      </div>
+      </Paper>
       {/*</Fade>*/}
     </Grid>
   );

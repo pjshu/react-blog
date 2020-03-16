@@ -1,5 +1,6 @@
 import {makeStyles} from "@material-ui/core";
 import React from "react";
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles({
   root: {
@@ -34,13 +35,12 @@ const randomColor = (id) => {
 
 export default function ColorTag(item) {
   const classes = useStyles(item);
-  return <div className={classes.root}>
+  return (<div className={classes.root}>
     <span>
       {item.name}
     </span>
-    <span className={classes.count}>
+      <span className={classes.count}>
      ({item.count})
     </span>
-
-  </div>;
+  </div>);
 }

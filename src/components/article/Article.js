@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from 'react-router-dom';
 import {Container, Grid, makeStyles, Typography} from "@material-ui/core";
-import api from '../contants/api';
-import axios from "../helpers/http";
+import api from '../../contants/api';
+import axios from "../../helpers/http";
 import 'braft-editor/dist/output.css';
-import BraftEditor from '../config/editorConfig';
-import Prism from "../config/prism";
-import '../config/prism.css';
-import '../config/table.css';
-import purpleBg from "../icons/purpleBg.svg";
-import blueBg from "../icons/blueBg.svg";
+import BraftEditor from '../../config/editorConfig';
+import Prism from "../../config/prism";
+import '../../config/prism.css';
+import '../../config/table.css';
+import purpleBg from "../../icons/purpleBg.svg";
+import blueBg from "../../icons/blueBg.svg";
 
 const useStyle = makeStyles(theme => ({
   root: {

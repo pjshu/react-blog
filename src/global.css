@@ -21,7 +21,6 @@ html, body, #root {
     height: 100%;
     margin: 0;
     padding: 0;
-    -webkit-font-smoothing: antialiased;
     /*background: url(./icons/purpleBg.svg) no-repeat fixed left -10px top -40px,*/
     /*url(./icons/blueBg.svg) no-repeat fixed center top -40px,*/
     /*url(./icons/purpleBg.svg) no-repeat fixed right -80px top -50px,*/
@@ -36,7 +35,7 @@ a {
     text-decoration: none;
 }
 
-ul{
+ul {
     padding: 0;
 }
 
@@ -55,9 +54,9 @@ p::-moz-selection {
 }
 
 
- /*设置滚动条的样式 */
+/*设置滚动条的样式 */
 ::-webkit-scrollbar {
-    width: 1px;
+    /*width: 1px;*/
 }
 
 /* 滚动槽 */

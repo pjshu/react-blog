@@ -2,41 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebc4b24d-dc2c-4257-b198-23d4d935ea0a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/SideBar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/articleList/Articles.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/articleList/PersonInfo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/articleList/TagList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/articleList/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/button/ExpandMore.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/button/InfoIcon.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/button/SquareBtn.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/button/UnderlineBtn.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/springTest/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/springTest/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/tag/CardTag.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/topBar/Logo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/topBar/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/square.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/triangle.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons/ts.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Loading.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/article/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/About.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/About.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Articles.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Article.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/archive/Test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Archive.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Article.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/article/Article.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/articleList/Articles.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/articleList/Articles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/articleList/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/articleList/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nav/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nav/SideList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/SideList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/tag/ColorTag.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tag/ColorTag.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/tag/Tags.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/tag/Tags.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/topBar/AppBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/topBar/AppBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/prism.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/prism.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/global.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/global.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +66,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.15.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -107,19 +82,19 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/icons" />
-      <recent name="$PROJECT_DIR$/src/components" />
-      <recent name="$PROJECT_DIR$/src/components/button" />
-      <recent name="$PROJECT_DIR$/src/components/articles" />
-      <recent name="$PROJECT_DIR$/src/components/tag" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/icons/testIcon" />
       <recent name="$PROJECT_DIR$/src/icons" />
       <recent name="$PROJECT_DIR$/src/components/topBar" />
       <recent name="$PROJECT_DIR$/src/components/home" />
       <recent name="$PROJECT_DIR$/src/icon" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/article" />
+      <recent name="$PROJECT_DIR$/src/icons" />
+      <recent name="$PROJECT_DIR$/src/components" />
+      <recent name="$PROJECT_DIR$/src/components/button" />
+      <recent name="$PROJECT_DIR$/src/components/articles" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -223,7 +198,10 @@
       <workItem from="1582778123812" duration="382000" />
       <workItem from="1584196577267" duration="508000" />
       <workItem from="1584236927684" duration="4041000" />
-      <workItem from="1584251426037" duration="15358000" />
+      <workItem from="1584251426037" duration="15719000" />
+      <workItem from="1584272662344" duration="2854000" />
+      <workItem from="1584275531393" duration="5618000" />
+      <workItem from="1584322697927" duration="4416000" />
     </task>
     <servers />
   </component>
@@ -256,26 +234,26 @@
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
     <state x="693" y="297" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.24.1920.1056@0.24.1920.1056" timestamp="1582256203993" />
-    <state x="1145" y="310" key="FileChooserDialogImpl" timestamp="1584270205432">
+    <state x="1145" y="310" key="FileChooserDialogImpl" timestamp="1584275473816">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state x="1145" y="310" key="FileChooserDialogImpl/0.24.1920.1056@0.24.1920.1056" timestamp="1584270205432" />
-    <state width="906" height="365" key="GridCell.Tab.0.bottom" timestamp="1584270691337">
+    <state x="1145" y="310" key="FileChooserDialogImpl/0.24.1920.1056@0.24.1920.1056" timestamp="1584275473816" />
+    <state width="900" height="365" key="GridCell.Tab.0.bottom" timestamp="1584281114747">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state width="906" height="365" key="GridCell.Tab.0.bottom/0.24.1920.1056@0.24.1920.1056" timestamp="1584270691337" />
-    <state width="906" height="365" key="GridCell.Tab.0.center" timestamp="1584270691336">
+    <state width="900" height="365" key="GridCell.Tab.0.bottom/0.24.1920.1056@0.24.1920.1056" timestamp="1584281114747" />
+    <state width="900" height="365" key="GridCell.Tab.0.center" timestamp="1584281114746">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state width="906" height="365" key="GridCell.Tab.0.center/0.24.1920.1056@0.24.1920.1056" timestamp="1584270691336" />
-    <state width="906" height="365" key="GridCell.Tab.0.left" timestamp="1584270691336">
+    <state width="900" height="365" key="GridCell.Tab.0.center/0.24.1920.1056@0.24.1920.1056" timestamp="1584281114746" />
+    <state width="900" height="365" key="GridCell.Tab.0.left" timestamp="1584281114746">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state width="906" height="365" key="GridCell.Tab.0.left/0.24.1920.1056@0.24.1920.1056" timestamp="1584270691336" />
-    <state width="906" height="365" key="GridCell.Tab.0.right" timestamp="1584270691336">
+    <state width="900" height="365" key="GridCell.Tab.0.left/0.24.1920.1056@0.24.1920.1056" timestamp="1584281114746" />
+    <state width="900" height="365" key="GridCell.Tab.0.right" timestamp="1584281114747">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state width="906" height="365" key="GridCell.Tab.0.right/0.24.1920.1056@0.24.1920.1056" timestamp="1584270691336" />
+    <state width="900" height="365" key="GridCell.Tab.0.right/0.24.1920.1056@0.24.1920.1056" timestamp="1584281114747" />
     <state x="411" y="187" key="SettingsEditor" timestamp="1582171880679">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
@@ -284,10 +262,10 @@
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
     <state x="100" y="124" width="1720" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.24.1920.1056@0.24.1920.1056" timestamp="1584259683726" />
-    <state x="508" y="217" width="903" height="718" key="find.popup" timestamp="1584270041134">
+    <state x="508" y="217" width="903" height="718" key="find.popup" timestamp="1584345351501">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state x="508" y="217" width="903" height="718" key="find.popup/0.24.1920.1056@0.24.1920.1056" timestamp="1584270041134" />
+    <state x="508" y="217" width="903" height="718" key="find.popup/0.24.1920.1056@0.24.1920.1056" timestamp="1584345351501" />
     <state x="119" y="257" key="search.everywhere.popup" timestamp="1581175480314">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
