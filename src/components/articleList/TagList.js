@@ -6,7 +6,6 @@ const useStyles = makeStyles(theme => ({
   colorTags: {
     '& > *': {
       marginTop: '10px'
-
     }
   }
 }));

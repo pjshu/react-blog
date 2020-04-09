@@ -5,30 +5,40 @@ import {http} from "../../hook";
 import api from "../../contants/api";
 import Loading from "../Loading";
 import axios from '../../helpers/http';
+import {useLocation} from "react-router-dom";
+import {TYPE, useMethods} from "../../context";
+
 
 function Index() {
   const [loading, setLoading] = useState(true);
-  const [state, setState] = useState({
-    current_page: 1,
-    content: []
-  });
+  const [state, setState] = useMethods(TYPE.posts);
+
+  const {search} = useLocation();
+  const tags = search.match(/tags=([^&]*)&?/);
+
   useEffect(() => {
-    axios.get(api.posts).then(res => {
+    const params = tags ? {tag: tags[1]} : {};
+    axios.get(api.posts, {
+      params
+    }).then(res => {
       setState(res.data);
       setLoading(false);
     }).catch(err => {
       console.log(err);
     });
-  }, []);
+  }, [setState, tags]);
 
   const handleOnNextPage = () => {
-    const handleResult = (res) => {
+    axios.get(api.post, {
+      params: {page: state.page}
+    }).then(res => {
       setState({
-        current_page: state.current_page,
-        content: state.content.concat(res.content)
+        page: state.page,
+        content: state.content.concat(res.data.content)
       });
-    };
-    http.get(api.posts, handleResult, {current_page: 1});
+    }).catch(error => {
+      console.log(error);
+    });
   };
 
   return (

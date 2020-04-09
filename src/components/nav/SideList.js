@@ -32,7 +32,6 @@ const SideList = ({toggleDrawer}) => {
             {router: router.HOME, primary: 'Home'},
             {router: router.ARTICLES, primary: "Article"},
             {router: router.TAG, primary: 'Tags'},
-            {router: router.ARCHIVE, primary: 'Archive'},
             {router: router.ABOUT, primary: 'About'},
           ].map(item => (
             <ListItem

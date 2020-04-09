@@ -992,10 +992,10 @@
   resolved "https://registry.npm.taobao.org/@csstools/normalize.css/download/@csstools/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha1-8JULuhiBlRLUL3GX5WxRiqSRzxg=
 
-"@emotion/hash@^0.7.4":
-  version "0.7.4"
-  resolved "https://registry.npm.taobao.org/@emotion/hash/download/@emotion/hash-0.7.4.tgz#f14932887422c9056b15a8d222a9074a7dfa2831"
-  integrity sha1-8UkyiHQiyQVrFajSIqkHSn36KDE=
+"@emotion/hash@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.npm.taobao.org/@emotion/hash/download/@emotion/hash-0.8.0.tgz#bbbff68978fefdbe68ccb533bc8cbe1d1afb5413"
+  integrity sha1-u7/2iXj+/b5ozLUzvIy+HRr7VBM=
 
 "@hapi/address@2.x.x":
   version "2.1.4"
@@ -1182,16 +1182,16 @@
   resolved "https://registry.npm.taobao.org/@juggle/resize-observer/download/@juggle/resize-observer-3.1.1.tgz#ade32049ae8e6cd692ef5d760aa4fdbe0db356e2"
   integrity sha1-reMgSa6ObNaS7112CqT9vg2zVuI=
 
-"@material-ui/core@^4.9.5":
-  version "4.9.5"
-  resolved "https://registry.npm.taobao.org/@material-ui/core/download/@material-ui/core-4.9.5.tgz#384869f2840b243241f7881a902f5ffc48360830"
-  integrity sha1-OEhp8oQLJDJB94gakC9f/Eg2CDA=
+"@material-ui/core@^4.9.9":
+  version "4.9.9"
+  resolved "https://registry.npm.taobao.org/@material-ui/core/download/@material-ui/core-4.9.9.tgz#902dc37eeb415dd3288feb2c92e0dc27d9caed48"
+  integrity sha1-kC3DfutBXdMoj+sskuDcJ9nK7Ug=
   dependencies:
     "@babel/runtime" "^7.4.4"
-    "@material-ui/styles" "^4.9.0"
-    "@material-ui/system" "^4.9.3"
+    "@material-ui/styles" "^4.9.6"
+    "@material-ui/system" "^4.9.6"
     "@material-ui/types" "^5.0.0"
-    "@material-ui/utils" "^4.7.1"
+    "@material-ui/utils" "^4.9.6"
     "@types/react-transition-group" "^4.2.0"
     clsx "^1.0.2"
     hoist-non-react-statics "^3.3.2"
@@ -1218,18 +1218,18 @@
     prop-types "^15.7.2"
     react-is "^16.8.0"
 
-"@material-ui/styles@^4.9.0":
-  version "4.9.0"
-  resolved "https://registry.npm.taobao.org/@material-ui/styles/download/@material-ui/styles-4.9.0.tgz#10c31859f6868cfa9d3adf6b6c3e32c9d676bc76"
-  integrity sha1-EMMYWfaGjPqdOt9rbD4yydZ2vHY=
+"@material-ui/styles@^4.9.6":
+  version "4.9.6"
+  resolved "https://registry.npm.taobao.org/@material-ui/styles/download/@material-ui/styles-4.9.6.tgz#924a30bf7c9b91af9c8f19c12c8573b8a4ecd085"
+  integrity sha1-kkowv3ybka+cjxnBLIVzuKTs0IU=
   dependencies:
     "@babel/runtime" "^7.4.4"
-    "@emotion/hash" "^0.7.4"
+    "@emotion/hash" "^0.8.0"
     "@material-ui/types" "^5.0.0"
-    "@material-ui/utils" "^4.7.1"
+    "@material-ui/utils" "^4.9.6"
     clsx "^1.0.2"
     csstype "^2.5.2"
-    hoist-non-react-statics "^3.2.1"
+    hoist-non-react-statics "^3.3.2"
     jss "^10.0.3"
     jss-plugin-camel-case "^10.0.3"
     jss-plugin-default-unit "^10.0.3"
@@ -1240,13 +1240,13 @@
     jss-plugin-vendor-prefixer "^10.0.3"
     prop-types "^15.7.2"
 
-"@material-ui/system@^4.9.3":
-  version "4.9.3"
-  resolved "https://registry.npm.taobao.org/@material-ui/system/download/@material-ui/system-4.9.3.tgz#ee48990d7941237fdaf21b7b399981d614bb0875"
-  integrity sha1-7kiZDXlBI3/a8ht7OZmB1hS7CHU=
+"@material-ui/system@^4.9.6":
+  version "4.9.6"
+  resolved "https://registry.npm.taobao.org/@material-ui/system/download/@material-ui/system-4.9.6.tgz?cache=0&sync_timestamp=1584529049910&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40material-ui%2Fsystem%2Fdownload%2F%40material-ui%2Fsystem-4.9.6.tgz#fd060540224da4d1740da8ca6e7af288e217717e"
+  integrity sha1-/QYFQCJNpNF0DajKbnryiOIXcX4=
   dependencies:
     "@babel/runtime" "^7.4.4"
-    "@material-ui/utils" "^4.7.1"
+    "@material-ui/utils" "^4.9.6"
     prop-types "^15.7.2"
 
 "@material-ui/types@^5.0.0":
@@ -1258,6 +1258,15 @@
   version "4.7.1"
   resolved "https://registry.npm.taobao.org/@material-ui/utils/download/@material-ui/utils-4.7.1.tgz#dc16c7f0d2cd02fbcdd5cfe601fd6863ae3cc652"
   integrity sha1-3BbH8NLNAvvN1c/mAf1oY648xlI=
+  dependencies:
+    "@babel/runtime" "^7.4.4"
+    prop-types "^15.7.2"
+    react-is "^16.8.0"
+
+"@material-ui/utils@^4.9.6":
+  version "4.9.6"
+  resolved "https://registry.npm.taobao.org/@material-ui/utils/download/@material-ui/utils-4.9.6.tgz?cache=0&sync_timestamp=1584529047496&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40material-ui%2Futils%2Fdownload%2F%40material-ui%2Futils-4.9.6.tgz#5f1f9f6e4df9c8b6a263293b68c94834248ff157"
+  integrity sha1-Xx+fbk35yLaiYyk7aMlINCSP8Vc=
   dependencies:
     "@babel/runtime" "^7.4.4"
     prop-types "^15.7.2"
@@ -4234,6 +4243,13 @@ copy-task@^0.1.0:
   resolved "https://registry.npm.taobao.org/copy-task/download/copy-task-0.1.0.tgz#4c34fe9ae54f2aaf609ed32f85b8f797a1f46ab6"
   integrity sha1-TDT+muVPKq9gntMvhbj3l6H0arY=
 
+copy-to-clipboard@^3:
+  version "3.3.1"
+  resolved "https://registry.npm.taobao.org/copy-to-clipboard/download/copy-to-clipboard-3.3.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcopy-to-clipboard%2Fdownload%2Fcopy-to-clipboard-3.3.1.tgz#115aa1a9998ffab6196f93076ad6da3b913662ae"
+  integrity sha1-EVqhqZmP+rYZb5MHatbaO5E2Yq4=
+  dependencies:
+    toggle-selection "^1.0.6"
+
 core-js-compat@^3.6.2:
   version "3.6.4"
   resolved "https://registry.npm.taobao.org/core-js-compat/download/core-js-compat-3.6.4.tgz#938476569ebb6cda80d339bcf199fae4f16fff17"
@@ -6890,7 +6906,7 @@ hmac-drbg@^1.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hoist-non-react-statics@^3.1.0, hoist-non-react-statics@^3.2.1, hoist-non-react-statics@^3.3.2:
+hoist-non-react-statics@^3.1.0, hoist-non-react-statics@^3.3.2:
   version "3.3.2"
   resolved "https://registry.npm.taobao.org/hoist-non-react-statics/download/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
   integrity sha1-7OCsr3HWLClpwuxZ/v9CpLGoW0U=
@@ -12052,6 +12068,14 @@ react-app-rewired@^2.1.5:
   dependencies:
     semver "^5.6.0"
 
+react-copy-to-clipboard@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.npm.taobao.org/react-copy-to-clipboard/download/react-copy-to-clipboard-5.0.2.tgz?cache=0&sync_timestamp=1573188315965&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-copy-to-clipboard%2Fdownload%2Freact-copy-to-clipboard-5.0.2.tgz#d82a437e081e68dfca3761fbd57dbf2abdda1316"
+  integrity sha1-2CpDfggeaN/KN2H71X2/Kr3aExY=
+  dependencies:
+    copy-to-clipboard "^3"
+    prop-types "^15.5.8"
+
 react-dev-utils@^10.2.0:
   version "10.2.0"
   resolved "https://registry.npm.taobao.org/react-dev-utils/download/react-dev-utils-10.2.0.tgz?cache=0&sync_timestamp=1581707187106&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-dev-utils%2Fdownload%2Freact-dev-utils-10.2.0.tgz#b11cc48aa2be2502fb3c27a50d1dfa95cfa9dfe0"
@@ -14306,6 +14330,11 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     extend-shallow "^3.0.2"
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
+
+toggle-selection@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.npm.taobao.org/toggle-selection/download/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
+  integrity sha1-bkWxJj8gF/oKzH2J14sVuL932jI=
 
 toidentifier@1.0.0:
   version "1.0.0"

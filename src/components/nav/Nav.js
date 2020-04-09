@@ -3,6 +3,8 @@ import {Button, Drawer, makeStyles} from '@material-ui/core';
 import FingerprintIcon from '@material-ui/icons/Fingerprint';
 import SideList from './SideList';
 
+
+
 const useStyles = makeStyles({
   root: {
     zIndex: '10',
@@ -15,7 +17,7 @@ const useStyles = makeStyles({
     color: '#CB88D1',
   },
   drawerPaper: {
-    boxShadow:'0 0 0',
+    boxShadow: '0 0 0',
     backgroundColor: 'transparent'
   },
   paperAnchorDockedLeft: {

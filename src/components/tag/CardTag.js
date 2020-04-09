@@ -5,6 +5,8 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import router from "../../contants/router";
+import {useHistory} from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -18,23 +20,35 @@ const useStyles = makeStyles({
 });
 
 export default function MediaCard(props) {
+  const {
+    describe,
+    image: {url},
+    name
+  } = props;
   const classes = useStyles();
+  const history = useHistory();
+
+  const handleOnClick = () => {
+    history.push({
+      pathname: router.ARTICLES,
+      search: `?tid=${props.id}`
+    });
+  };
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} onClick={handleOnClick}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={props.image}
+          image={url}
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            ubuntu
+            {name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+            {describe}
           </Typography>
         </CardContent>
       </CardActionArea>

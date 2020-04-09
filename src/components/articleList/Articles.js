@@ -9,17 +9,10 @@ import ExpandMore from '../button/ExpandMore';
 import UnderlineBtn from '../button/UnderlineBtn';
 import purpleBg from "../../icons/purpleBg.svg";
 import blueBg from "../../icons/blueBg.svg";
-import Slide from "@material-ui/core/Slide";
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
-
-import Fade from "@material-ui/core/Fade";
-// import purpleBg from '../../icons/purpleBg.svg';
-// import blueBg from '../../icons/blueBg.svg';
-import VisibilitySensor from 'react-visibility-sensor';
-import Home from "../home/Home";
-import Grow from '@material-ui/core/Grow';
-
+import {useLocation} from 'react-router-dom';
+import {formatTime} from "../../helpers/datetime";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,22 +21,24 @@ const useStyles = makeStyles((theme) => ({
       backgroundSize: 0,
     },
     [theme.breakpoints.only("sm")]: {
-      backgroundSize: '100px, 100px, 200px, 150px,100px',
+      // backgroundSize: '100px, 100px, 200px, 150px,100px',
     },
     background: `
-    url(${purpleBg}) no-repeat fixed left -10px top -40px,
-    url(${blueBg}) no-repeat fixed center top -40px,
-    url(${purpleBg}) no-repeat fixed right -80px top -50px,
-    url(${blueBg}) no-repeat fixed right -20px bottom -50px,
-    url(${purpleBg}) no-repeat fixed center bottom -40px`,
-    backgroundSize: '150px, 100px, 300px, 200px, 100px',
+      url(${blueBg}) no-repeat fixed center top 0px,
+      url(${purpleBg}) no-repeat fixed right -50px top 0px,
+      url(${blueBg}) no-repeat fixed right -50px bottom -50px,
+      url(${purpleBg}) no-repeat fixed center bottom -10px,
+      url(${blueBg}) no-repeat fixed left -50px bottom -50px,
+      url(${purpleBg}) no-repeat fixed left -50px top 0px
+    `,
+    backgroundSize: '150px, 200px, 150px, 100px, 150px, 200px',
   },
 
   title: {
     fontWeight: 'bold',
     lineHeight: '60px',
     fontSize: 45,
-    fontFamily: "Rubik Regular",
+    fontFamily: "Rubik-Regular",
     background: 'linear-gradient(135deg, #CB88D2, #7F75EE)',
     WebkitBackgroundClip: 'text',
     color: 'transparent',
@@ -105,26 +100,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Articles({state, handleOnNextPage}) {
   const classes = useStyles();
-  // TODO : bug
-  // const [navHidden, setNavHidden] = useState(false);
-  // const handleScroll = (e) => {
-  //   // 向上滑动显示导航栏
-  //   if (e.nativeEvent.wheelDelta > 0) {
-  //     if (navHidden !== false) {
-  //       setNavHidden(false);
-  //     }
-  //   } else {
-  //     if (navHidden !== true) {
-  //       setNavHidden(true);
-  //     }
-  //   }
-  // };
-
-
-  const handleScroll = (e) => {
-    // console.log(e);
-  };
-
   return (
     <div className={classes.root}>
       <Grid
@@ -134,34 +109,30 @@ function Articles({state, handleOnNextPage}) {
         <Grid item xl={6} lg={7} md={8} sm={10} xs={12}>
           {
             state.content.map((item, index) => (
-              <Article key={item.id} {...{index, item, classes}}/>
+              <Article key={item.id} {...{index, item}}/>
             ))
           }
-
         </Grid>
         <Grid item className={classes.personInfo}>
           <PersonInfo/>
           <TagList/>
         </Grid>
       </Grid>
-      {/*<Fade in={true}>*/}
-      {/*  <Grid className={classes.readMore}>*/}
-      {/*    <ExpandMore onClick={handleOnNextPage}/>*/}
-      {/*  </Grid>*/}
-      {/*</Fade>*/}
+      <Grid className={classes.readMore}>
+        <ExpandMore onClick={handleOnNextPage}/>
+      </Grid>
     </div>
   );
 }
 
 
-const Article = ({item, classes, index}) => {
-  const [inOrOut, setInOrOut] = useState(true);
+const Article = ({item}) => {
+  const classes = useStyles();
   const [hover, setHover] = useState(false);
-
   return (
     <Grid
       onWheel={e => {
-        console.log(e.nativeEvent.deltaY);
+        // console.log(e.nativeEvent.deltaY);
       }}
       style={{
         // marginTop: '100px',
@@ -173,7 +144,6 @@ const Article = ({item, classes, index}) => {
       justify={"center"}
       direction={"column"}
     >
-      {/*<Fade collapsedHeight={200} in={isVisible} mountOnEnter unmountOnExit>*/}
       <Paper
         onMouseEnter={() => {
           setHover(true);
@@ -181,52 +151,54 @@ const Article = ({item, classes, index}) => {
         onMouseLeave={() => {
           setHover(false);
         }}
-        boxShadow={hover ? 1 : 8}
+        boxShadow={hover ? 1 : 6}
         component={Box}
         style={{
-          padding: '50px'
+          padding: '50px',
+          borderRadius: '18px',
+          minHeight: 500,
+          maxHeight: 600,
+          width: 750,
+          position: 'relative'
         }}>
-        <Slide timeout={1000} direction={'right'} in={true} mountOnEnter unmountOnExit>
+        <Typography
+          className={classes.title}
+          component="h3"
+          align="left"
+        >
+          {item.title}
+        </Typography>
+        <Grid className={classes.articleInfo}>
           <Typography
-            className={classes.title}
-            component="h3"
-            align="left">
-            {item.title}行行还行还行还行还行还行行还行还行还行还行还行
+            component="h4"
+            align="left"
+          >
+            {formatTime(item.change_date)}
           </Typography>
-        </Slide>
-        <Slide timeout={1000} direction={'right'} in={true} mountOnEnter unmountOnExit>
-          <Grid className={classes.articleInfo}>
-            <Typography
-              component="h4"
-              align="left">
-              2019/10/2 12:50
-            </Typography>
-            <Grid>
-              0评论
-            </Grid>
-          </Grid>
-        </Slide>
-        <Slide timeout={1000} direction={'right'} in={true} mountOnEnter unmountOnExit>
+          <Typography>
+            {item.comments}评论
+          </Typography>
+        </Grid>
 
-          <Grid className={classes.tags}>
-            <Chip label="tag1" variant="outlined"/>
-            <Chip label="tag2" variant="outlined"/>
-          </Grid>
-        </Slide>
-        <Slide timeout={1000} direction={'left'} in={true} mountOnEnter unmountOnExit>
-          <Typography
-            component="p"
-            className={classes.article}>
-            {item.article}
-          </Typography>
-        </Slide>
-        <Slide timeout={1000} direction={'up'} in={true} mountOnEnter unmountOnExit>
-          <Grid>
-            <UnderlineBtn label={"阅读全文"} to={`${router.DETAIL}/${item.id}`}/>
-          </Grid>
-        </Slide>
+        <Grid className={classes.tags}>
+          {
+            item.tags.map(tag => (
+              <Chip key={tag.id} label={tag.name} variant="outlined"/>
+            ))
+          }
+        </Grid>
+        <div
+          className={classes.article}
+          style={{maxWidth: '100%'}}
+          dangerouslySetInnerHTML={{__html: item.excerpt}}
+        />
+        <Grid style={{
+          position: 'absolute',
+          bottom: 50
+        }}>
+          <UnderlineBtn label={"阅读全文"} to={`${router.DETAIL}/${item.id}`}/>
+        </Grid>
       </Paper>
-      {/*</Fade>*/}
     </Grid>
   );
 };

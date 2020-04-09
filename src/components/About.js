@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {Grid, makeStyles} from "@material-ui/core";
+import {Grid, makeStyles, Paper} from "@material-ui/core";
 import api from '../contants/api';
 import axios from "../helpers/http";
-import BraftEditor from "../config/editorConfig";
 import 'braft-editor/dist/output.css';
 import square from "../icons/square.svg";
 import triangle from "../icons/triangle.svg";
+import {TYPE, useMethods} from "../context";
 
 const useStyle = makeStyles(theme => ({
   root: {
@@ -27,12 +27,11 @@ const useStyle = makeStyles(theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    boxShadow: '0 62.5px 125px -25px rgba(50, 50, 73, 0.5), 0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6)',
     [theme.breakpoints.down("xs")]: {
       boxShadow: '0 0 0'
     },
     [theme.breakpoints.down("sm")]: {
-      width:'100%',
+      width: '100%',
     },
 
   },
@@ -44,26 +43,16 @@ const useStyle = makeStyles(theme => ({
 }));
 
 function About() {
-  const [state, setState] = useState({
-    about: ''
-  });
+  const [{about},] = useMethods(TYPE.userInfo);
   const classes = useStyle();
-  useEffect(() => {
-    axios.get(api.about).then(res => {
-      const data = res.data;
-      data.about = BraftEditor.createEditorState(data.about).toHTML();
-      setState(res.data);
-    }).catch(error => {
-      console.log(error);
-    });
-  }, []);
 
   return (
     <Grid
       container
       className={classes.root}
     >
-      <Grid item
+      <Grid
+        item
         xs={12}
         sm={10}
         md={8}
@@ -73,7 +62,7 @@ function About() {
       >
         <div
           className={classes.html}
-          dangerouslySetInnerHTML={{__html: state.about}}
+          dangerouslySetInnerHTML={{__html: about}}
         />
       </Grid>
     </Grid>

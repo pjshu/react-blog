@@ -3,6 +3,9 @@ import AdjustIcon from '@material-ui/icons/Adjust';
 import {Link, useLocation} from 'react-router-dom';
 import {Grid, makeStyles} from "@material-ui/core";
 import router from '../contants/router';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import {useTheme} from '@material-ui/core/styles';
+
 
 const useStyle = makeStyles(theme => ({
   root: {
@@ -25,33 +28,39 @@ const useStyle = makeStyles(theme => ({
 }));
 
 function SideBar() {
-  const location = useLocation().pathname;
+  const {pathname} = useLocation();
   const classes = useStyle();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('xs'));
   return (
-    <div className={classes.root}>
+    <>
       {
-        [
-          {title: 'Home', router: router.HOME},
-          {title: 'Article', router: router.ARTICLES},
-          {title: 'Tags', router: router.TAG},
-          {title: 'Archive', router: router.ARCHIVE},
-          {title: 'About', router: router.ABOUT},
-        ].map(item => (
-          <Grid
-            style={{
-              color: location === item.router ? '#9462E4' : ''
-            }}
-            key={item.title}
-            to={item.router}
-            component={Link}
-            title={item.title}>
-            <AdjustIcon style={{
-              fontSize: 25
-            }}/>
-          </Grid>
-        ))
+        matches ? null :
+          <div className={classes.root}>
+            {
+              [
+                {title: 'Home', router: router.HOME},
+                {title: 'Article', router: router.ARTICLES},
+                {title: 'Tags', router: router.TAG},
+                {title: 'About', router: router.ABOUT},
+              ].map(item => (
+                <Grid
+                  style={{
+                    color: pathname === item.router ? '#9462E4' : ''
+                  }}
+                  key={item.title}
+                  to={item.router}
+                  component={Link}
+                  title={item.title}>
+                  <AdjustIcon style={{
+                    fontSize: 25
+                  }}/>
+                </Grid>
+              ))
+            }
+          </div>
       }
-    </div>
+    </>
   );
 }
 

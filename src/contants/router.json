@@ -1,7 +1,6 @@
 {
   "HOME": "/",
   "DETAIL": "/post",
-  "ARCHIVE": "/archive",
   "ABOUT": "/about",
   "TAG": "/tag",
   "ARTICLES": "/articles"

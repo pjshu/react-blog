@@ -3,5 +3,6 @@
   "archive": "/archive",
   "post": "/post",
   "tag": "/tags",
-  "posts": "/posts"
+  "posts": "/posts",
+  "search": "/search"
 }
