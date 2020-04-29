@@ -147,7 +147,7 @@ pre[class*="language-"] {
 
 .token.keyword {
     color: #c792ea;
-    font-style: italic;
+    /*font-style: italic;*/
 }
 
 .token.number {

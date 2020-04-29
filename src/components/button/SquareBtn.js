@@ -34,4 +34,4 @@ function SquareBtn(props) {
   );
 }
 
-export default SquareBtn;
+export default React.memo(SquareBtn);

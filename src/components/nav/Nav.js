@@ -1,40 +1,22 @@
-import React, {useState} from 'react';
-import {Button, Drawer, makeStyles} from '@material-ui/core';
+import React, {useCallback, useMemo, useState} from 'react';
+import {Button, Drawer} from '@material-ui/core';
 import FingerprintIcon from '@material-ui/icons/Fingerprint';
 import SideList from './SideList';
+import useStyles from './nav.style';
 
-
-
-const useStyles = makeStyles({
-  root: {
-    zIndex: '10',
-    position: 'absolute',
-    right: 10,
-    top: 10,
-  },
-  FingerprintIcon: {
-    fontSize: 40,
-    color: '#CB88D1',
-  },
-  drawerPaper: {
-    boxShadow: '0 0 0',
-    backgroundColor: 'transparent'
-  },
-  paperAnchorDockedLeft: {
-    borderRight: 0
-  }
-});
-
-
-export default function Nav() {
+function Nav() {
   const classes = useStyles();
   const [state, setState] = useState(false);
-  // const toggleDrawer = (open) => event => {
-  //   setState(open);
-  // };
-  const toggleDrawer = () => {
-    setState(!state);
-  };
+
+  const toggleDrawer = useCallback(() => {
+    setState((state) => !state);
+  }, []);
+
+  const drawerClasses = useMemo(() => ({
+    paper: classes.drawerPaper,
+    paperAnchorDockedLeft: classes.paperAnchorDockedLeft,
+  }), [classes.drawerPaper, classes.paperAnchorDockedLeft]);
+
 
   return (
     <div className={classes.root}>
@@ -42,10 +24,7 @@ export default function Nav() {
         <FingerprintIcon className={classes.FingerprintIcon}/>
       </Button>
       <Drawer
-        classes={{
-          paper: classes.drawerPaper,
-          paperAnchorDockedLeft: classes.paperAnchorDockedLeft,
-        }}
+        classes={drawerClasses}
         // variant="persistent"
         anchor="left"
         open={state}
@@ -57,3 +36,5 @@ export default function Nav() {
     </div>
   );
 }
+
+export default React.memo(Nav);

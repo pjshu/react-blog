@@ -1,8 +1,8 @@
 {
-  "about": "/user/about",
+  "userInfo": "/user/info",
   "archive": "/archive",
   "post": "/post",
-  "tag": "/tags",
+  "tags": "/tags",
   "posts": "/posts",
   "search": "/search"
 }

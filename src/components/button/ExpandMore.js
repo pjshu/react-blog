@@ -3,8 +3,9 @@ import {Link} from "react-router-dom";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import {Button, makeStyles} from "@material-ui/core";
 
+
 const useStyle = makeStyles({
-  root: props => {
+  root: absolute => {
     const common = {
       boxSizing: 'border-box',
       display: 'flex',
@@ -19,39 +20,52 @@ const useStyle = makeStyles({
       minWidth: 50,
       background: 'linear-gradient(to right bottom, #CB88D2, #8E79E9)'
     };
-    const absolute = {
+    const absoluteStyle = {
       position: 'absolute',
       left: '50%',
       bottom: 20,
       transform: "translate(-50%, 0)",
     };
-    return Object.assign(common, props.absolute ? absolute : {});
+    return Object.assign(common, absolute ? absoluteStyle : {});
+  },
+  icon: {
+    color: '#fff'
   }
-
 });
 
 /**
+ * @param open
  * @param props
  * @param props.absolute 如果传入该属性,则按钮位于页面正下方中央
  * @param props.to 如果传入,按钮表现为Link,用于路由跳转
  */
-function ExpandMore(props) {
-  const classes = useStyle(props);
+function ExpandMore({hidden = false, ...props}) {
+  const classes = useStyle(props.absolute);
+
   if (props.to) {
     props = Object.assign({
       to: props.to,
       component: Link
     }, props);
   }
+
   return (
-    <Button
-      className={classes.root}
-      variant="contained"
-      {...props}
-    >
-      <ExpandMoreIcon style={{color: '#fff'}}/>
-    </Button>
+    <>
+      {
+        hidden ? null : (
+          <Button
+            className={classes.root}
+            variant="contained"
+            {...props}
+          >
+            <ExpandMoreIcon className={classes.icon}/>
+          </Button>
+        )
+      }
+    </>
   );
 }
 
-export default ExpandMore;
+export default React.memo(ExpandMore, (pre, next) => {
+  return pre.hidden === next.hidden;
+});

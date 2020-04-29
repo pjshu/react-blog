@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useCallback, useContext} from 'react';
 import GitHubIcon from "@material-ui/icons/GitHub";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import {Grid, makeStyles} from "@material-ui/core";
 import {GITHUB, EMAIL, TWITTER} from "../../config/userinfo";
 import {CopyToClipboard} from "react-copy-to-clipboard";
+import {Context} from "../../context";
 
 
 const useStyle = makeStyles({
@@ -30,8 +31,24 @@ const useStyle = makeStyles({
  * @param props
  * @param props.justify 用于对齐三个icon
  */
+
 function InfoIcon(props) {
+  const [, {
+    setMessageBar,
+  }] = useContext(Context);
+
+  const handleOnCopy = useCallback(() => {
+    setMessageBar({
+      open: true,
+      message: "已经复制到剪切板・ω・"
+    });
+  }, [setMessageBar]);
+  return <ContextInfoIcon {...{handleOnCopy, ...props}}/>;
+};
+
+const ContextInfoIcon = React.memo(function ContextInfoIcon({handleOnCopy, ...props}) {
   const classes = useStyle(props);
+
   return (
     <Grid container className={classes.icon}>
       <a href={GITHUB}>
@@ -43,18 +60,20 @@ function InfoIcon(props) {
       <CopyToClipboard
         title={'点击复制'}
         text={EMAIL}
-        // TODO 消息条
-        onCopy={() => {
-          alert('复制成功')
-        }}
+        onCopy={handleOnCopy}
       >
-        {/*chrome 无效呵呵*/}
+        {/*mailto chrome 无效呵呵*/}
         <a href={`mailto:${EMAIL}`}>
           <MailOutlineIcon/>
         </a>
       </CopyToClipboard>
     </Grid>
   );
-}
+}, (pre, next) => {
+  return pre.handleOnCopy === next.handleOnCopy;
+});
 
-export default InfoIcon;
+
+export default React.memo(InfoIcon, (pre, next) => {
+  return true;
+});

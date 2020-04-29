@@ -1,42 +1,48 @@
-import React, {useEffect, useReducer} from 'react';
-import Articles from './components/articleList';
-import Tag from "./components/tag/Tags";
-import About from "./components/About";
-import Article from './components/article';
-import Home from './components/home/Home';
-// import Nav from "./components/nav";
+import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import router from './contants/router';
-import './global.css';
 import SideBar from "./components/SideBar";
 import TopBar from "./components/topBar";
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Footer from "./Footer";
-import {Context, defaultValue, reducer, TYPE, useMethods} from './context';
-import axios from "./helpers/http";
-import api from "./contants/api";
+import Footer from "./components/footer";
+import {Context, defaultValue, methods} from './context';
+import {hot} from 'react-hot-loader';
+import PortalMessage from './components/Message';
+import useMethods from 'use-methods';
+import ErrorBoundary from './components/ErrorBoundaries';
+import Loading from "./components/Loading";
+import {ReactQueryConfigProvider} from 'react-query';
+import './style/global.css';
 
+
+const Article = React.lazy(() => import('./components/article'));
+const Articles = React.lazy(() => import('./components/articles'));
+const Tags = React.lazy(() => import('./components/tags'));
+const About = React.lazy(() => import('./components/about'));
+const Home = React.lazy(() => import('./components/home/Home'));
+
+const queryConfig = {
+  //react-query bug
+  suspense: true,
+  refetchOnWindowFocus: false,
+};
 
 const App = React.memo(function App() {
-  const [state, dispatch] = useReducer(reducer, defaultValue);
+  const [state, dispatch] = useMethods(methods, defaultValue);
   return (
-    <Context.Provider value={{state, dispatch}}>
-      <ContextApp/>
-    </Context.Provider>
+    <ErrorBoundary>
+      <React.Suspense fallback={<Loading/>}>
+        <ReactQueryConfigProvider config={queryConfig}>
+          <Context.Provider value={[state, dispatch]}>
+            <ContextApp/>
+          </Context.Provider>
+        </ReactQueryConfigProvider>
+      </React.Suspense>
+    </ErrorBoundary>
   );
 });
 
 const ContextApp = React.memo(function ContextApp() {
-  const [, setState] = useMethods(TYPE.userInfo);
-
-  useEffect(() => {
-    axios.get(api.about).then(res => {
-      setState(res.data);
-    }).catch(error => {
-      console.log(error);
-    });
-  }, [setState]);
-
   return (
     <Router>
       <CssBaseline/>
@@ -46,16 +52,18 @@ const ContextApp = React.memo(function ContextApp() {
         <Route path={router.HOME} exact><Home/></Route>
         <Route>
           <Switch>
-            <Route path={router.TAG}><Tag/></Route>
+            <Route path={router.TAG}><Tags/></Route>
             <Route path={router.ABOUT}><About/></Route>
             <Route path={`${router.DETAIL}/:id`}><Article/></Route>
             <Route path={router.ARTICLES} exact><Articles/></Route>
           </Switch>
         </Route>
       </Switch>
+      <PortalMessage/>
       <Footer/>
     </Router>
   );
 });
 
-export default App;
+export default process.env.NODE_ENV === "development" ? hot(module)(App) : App;
+

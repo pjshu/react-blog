@@ -3,89 +3,78 @@ import React from "react";
 
 export const defaultValue = {
   posts: {
-    page: 1,
-    content: []
+    page: 0,
+    content: [],
+    bottom: false,
+    rowsPerPage: 8
   },
   post: {
     id: '',
     article: '',
     title: '',
+    comments: 0,
+    change_date: new Date().getTime(),
     // background_image: ''
   },
   tags: {
-    page: 1,
-    content: []
+    // 缓存已经请求的页面
+    page: 0,
+    content: [],
+    bottom: false,
+    rowsPerPage: 8
   },
   userInfo: {
     avatar: '',
     about: '',
-    github: '',
-    twitter: '',
-    email: '',
-    ICP: '',
+    nickname: '',
+    icp: '',
+    articleCount: '',
+    tagsCount: '',
+    motto: ''
+    // github: '',
+    // twitter: '',
+    // email: '',
+    //备案号
   },
+  messageBar: {
+    open: false,
+    message: ''
+  }
 };
 
 export const Context = React.createContext();
 
-export const TYPE = {
-  posts: 'posts',
-  tags: 'tags',
-  post: 'post',
-  userInfo: 'userInfo'
-};
-
-const generateAction = (name) => {
-  return (value) => ({
-    type: TYPE[name],
-    ...value,
-  });
-};
-
-
-export const useMethods = (name) => {
-  const {dispatch, state: {[name]: state}} = React.useContext(Context);
-  const action = React.useMemo(() => {
-    return generateAction(name);
-  }, [name]);
-
-  const myAction = React.useCallback((value) => {
-    dispatch(action(value));
-  }, [action, dispatch]);
-  return [state, myAction];
-};
-
-export function reducer(state, action) {
-  const {type, ...data} = action;
-  switch (type) {
-    case TYPE.posts:
-      return {
-        ...state,
-        posts: {
-          page: data.page,
-          content: [...state.posts.content, ...data.content]
-        }
-      };
-    case TYPE.tags:
-      return {
-        ...state,
-        tags: {
-          page: data.page,
-          content: [...state.tags.content, ...data.content]
-        }
-      };
-    case TYPE.post:
-      return {
-        ...state,
-        post: {...state.post, ...data}
-      };
-    case TYPE.userInfo:
-      return {
-        ...state,
-        userInfo: {...state.userInfo, ...data}
-      };
-    default:
-      throw new Error();
+export const methods = (state) => ({
+  combinePostsContent: (content) => {
+    state.posts.content = [...state.posts.content, ...content];
+  },
+  setPostsContent: (data) => {
+    state.posts.content = [...data];
+  },
+  setPostsBottom: () => {
+    state.posts.bottom = true;
+  },
+  incrementPostsPage: () => {
+    state.posts.page++;
+  },
+  setTagsContent: (content) => {
+    state.tags.content = [...content];
+  },
+  setTagsBottom: () => {
+    state.tags.bottom = true;
+  },
+  incrementTagsPage: () => {
+    state.tags.page++;
+  },
+  setPost: (data) => {
+    state.post = {...state.post, ...data};
+  },
+  setUserInfo: (data) => {
+    state.userInfo = {...state.userInfo, ...data};
+  },
+  setMessageBar: (data) => {
+    state.messageBar = {...state.messageBar, ...data};
   }
-}
+});
+
 

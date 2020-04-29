@@ -24,7 +24,10 @@ const useStyle = makeStyles(theme => ({
         color: '#9462E4'
       },
     }
-  }
+  },
+  icon: {
+    fontSize: 25
+  },
 }));
 
 function SideBar() {
@@ -32,6 +35,7 @@ function SideBar() {
   const classes = useStyle();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('xs'));
+
   return (
     <>
       {
@@ -52,9 +56,7 @@ function SideBar() {
                   to={item.router}
                   component={Link}
                   title={item.title}>
-                  <AdjustIcon style={{
-                    fontSize: 25
-                  }}/>
+                  <AdjustIcon className={classes.icon}/>
                 </Grid>
               ))
             }
@@ -64,4 +66,4 @@ function SideBar() {
   );
 }
 
-export default SideBar;
+export default React.memo(SideBar);

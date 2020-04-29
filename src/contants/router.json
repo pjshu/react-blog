@@ -1,6 +1,6 @@
 {
   "HOME": "/",
-  "DETAIL": "/post",
+  "DETAIL": "/article",
   "ABOUT": "/about",
   "TAG": "/tag",
   "ARTICLES": "/articles"

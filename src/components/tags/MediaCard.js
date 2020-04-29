@@ -1,26 +1,17 @@
-import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Typography from '@material-ui/core/Typography';
+import React, {useCallback} from 'react';
+import {
+  CardMedia,
+  Typography,
+  Card,
+  CardActionArea,
+  CardContent
+} from '@material-ui/core';
 import router from "../../contants/router";
 import {useHistory} from "react-router-dom";
+import useStyles from './mediaCard.style';
 
-const useStyles = makeStyles({
-  root: {
-    width: 345
-    // minWidth:300,
-    // maxWidth: 345,
-  },
-  media: {
-    height: 140,
-  },
-});
-
-export default function MediaCard(props) {
-  const {
+function MediaCard(props) {
+  let {
     describe,
     image: {url},
     name
@@ -28,12 +19,12 @@ export default function MediaCard(props) {
   const classes = useStyles();
   const history = useHistory();
 
-  const handleOnClick = () => {
+  const handleOnClick = useCallback(() => {
     history.push({
       pathname: router.ARTICLES,
       search: `?tid=${props.id}`
     });
-  };
+  }, [history, props.id]);
 
   return (
     <Card className={classes.root} onClick={handleOnClick}>
@@ -47,7 +38,11 @@ export default function MediaCard(props) {
           <Typography gutterBottom variant="h5" component="h2">
             {name}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography
+            title={describe}
+            noWrap={true}
+            color="textSecondary"
+          >
             {describe}
           </Typography>
         </CardContent>
@@ -55,3 +50,7 @@ export default function MediaCard(props) {
     </Card>
   );
 }
+
+export default React.memo(MediaCard, (pre, next) => {
+  return pre.id === next.id;
+});

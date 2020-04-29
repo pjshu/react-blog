@@ -42,4 +42,4 @@ function UnderlineBtn(props) {
   );
 }
 
-export default UnderlineBtn;
+export default React.memo(UnderlineBtn);

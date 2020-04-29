@@ -25,15 +25,6 @@ axios.interceptors.request.use(config => {
 axios.interceptors.response.use(res => {
   return res.data;
 }, error => {
-  const data = error.response;
-  if (data) {
-    const status = data.status;
-    if (status === 401) {
-      //TODO
-    } else if (status === 401) {
-      //TODO
-    }
-  }
   return Promise.resolve(error.response);
 });
 

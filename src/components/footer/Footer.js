@@ -1,32 +1,36 @@
 import React from 'react';
 import {Grid, Typography} from "@material-ui/core";
 import {useLocation} from "react-router-dom";
-import router from './contants/router';
+import router from '../../contants/router';
+import useStyles from './footer.style';
 
-function Footer() {
+function Footer({nickname, icp}) {
+  const classes = useStyles();
   const {pathname} = useLocation();
   return (
     <>
       {
         pathname === router.HOME ? null : (
           <Grid
+            component={'footer'}
             container
             direction={'column'}
             justify={'center'}
             alignItems={'center'}
-            style={{
-              height: 200,
-            }}
-            spacing={1}
+            className={classes.root}
           >
             <Grid item>
-              <Typography>备案号:</Typography>
+              {
+                icp && (
+                  <Typography>备案号:{icp}</Typography>
+                )
+              }
             </Grid>
             <Grid item>
               <Typography>Powered by <a href="https://github.com/pjshu/react-blog">react-blog</a></Typography>
             </Grid>
             <Grid item>
-              <Typography>Copyright© <a href={'https://github.com/pjshu'}>pjshu</a></Typography>
+              <Typography>Copyright© {nickname}</Typography>
             </Grid>
             <Grid item>
               <Typography>
@@ -42,4 +46,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default React.memo(Footer);

@@ -1,17 +1,9 @@
 import React from 'react';
-import {List, ListItem, ListItemText, makeStyles} from '@material-ui/core';
+import {List, ListItem, ListItemText} from '@material-ui/core';
 import {Link} from "react-router-dom";
 import router from '../../contants/router';
+import useStyles from './styleList.style';
 
-
-const useStyles = makeStyles({
-  root: {
-    width: 100,
-  },
-  fullList: {
-    width: 'auto',
-  },
-});
 
 const SideList = ({toggleDrawer}) => {
   const classes = useStyles();
@@ -21,12 +13,7 @@ const SideList = ({toggleDrawer}) => {
       onClick={toggleDrawer}
       onKeyDown={toggleDrawer}
     >
-      <List style={{
-        height: '450px',
-        position: 'fixed',
-        top: '50%',
-        transform: 'translateY(-50%)',
-      }}>
+      <List className={classes.list}>
         {
           [
             {router: router.HOME, primary: 'Home'},
@@ -35,11 +22,7 @@ const SideList = ({toggleDrawer}) => {
             {router: router.ABOUT, primary: 'About'},
           ].map(item => (
             <ListItem
-              style={{
-                height: 25,
-                marginTop: 20,
-                padding: 1
-              }}
+              className={classes.listItem}
               button
               component={Link}
               to={item.router}
@@ -52,4 +35,4 @@ const SideList = ({toggleDrawer}) => {
     </div>);
 };
 
-export default SideList;
+export default React.memo(SideList);
