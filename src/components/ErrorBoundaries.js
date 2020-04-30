@@ -1,13 +1,25 @@
-import React from "react";
+import React, {PureComponent} from 'react';
+import {captureException, withScope} from '@sentry/browser';
+import makeStyles from "@material-ui/core/styles/makeStyles";
 
-class ErrorBoundary extends React.Component {
+const useStyles = makeStyles({
+  root: {
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    background: 'white'
+  }
+});
+
+class ErrorBoundaries extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {hasError: false};
+    this.state = {eventId: null};
   }
 
-  static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
+  static getDerivedStateFromError() {
     return {hasError: true};
   }
 
@@ -16,18 +28,29 @@ class ErrorBoundary extends React.Component {
       console.error(error);
       console.error(errorInfo);
     }
-    // You can also log the error to an error reporting service
-    // logErrorToMyService(error, errorInfo);
+    withScope((scope) => {
+      scope.setExtras(errorInfo);
+      const eventId = captureException(error);
+      this.setState({eventId});
+    });
   }
 
   render() {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>;
+      return <ErrorUi/>;
     }
-
     return this.props.children;
   }
 }
 
-export default ErrorBoundary;
+
+export function ErrorUi() {
+  const classes = useStyles();
+  return (
+    <div className={classes.root}>
+      未知错误
+    </div>
+  );
+}
+
+export default ErrorBoundaries;
