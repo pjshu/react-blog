@@ -2,7 +2,7 @@ import React from 'react';
 import {Grid} from '@material-ui/core';
 import PersonInfo from './PersonInfo';
 import Tags from './Tags';
-import ExpandMore from '../button/ExpandMore';
+import ExpandMore from '../ExpandMoreButton';
 import ArticleCard from './ArticleCard';
 import useStyles from './articles.style';
 

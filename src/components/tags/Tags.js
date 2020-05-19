@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container, Grid} from "@material-ui/core";
 import MediaCard from "./MediaCard";
-import ExpandMore from "../button/ExpandMore";
+import ExpandMore from "../ExpandMoreButton";
 import useStyles from './tags.style';
 
 

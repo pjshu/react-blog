@@ -57,5 +57,12 @@ export default makeStyles(theme => ({
     [theme.breakpoints.up("lg")]: {
       right: '5vw',
     },
+  },
+  aboutButton: {
+    borderRadius: 10,
+    width: 100,
+    color: '#fff',
+    fontWeight: 'bold',
+    background: 'linear-gradient(to right bottom, #CB88D2, #8E79E9)'
   }
 }));

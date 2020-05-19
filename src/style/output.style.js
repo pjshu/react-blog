@@ -6,7 +6,10 @@ export default makeStyles((theme) => ({
   root: {
     whiteSpace: 'pre-wrap',
     // maxWidth: '100%',
-    fontFamily: 'Rubik-Regular-kern-latin'
+    fontFamily: 'Rubik-Regular-kern-latin',
+    '& a': {
+      wordBreak: 'break-word',
+    }
   },
   emoji: {
     '& .braft-emoticon-wrap > img': {

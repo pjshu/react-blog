@@ -6,7 +6,8 @@ export default makeStyles((theme) => ({
   root: {
     padding: '20px 30px 20px 30px',
     minHeight: '100vh',
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.only("xs")]: {
+      padding: '0px 5px 0px 5px',
       backgroundSize: 0,
     },
     [theme.breakpoints.only("sm")]: {

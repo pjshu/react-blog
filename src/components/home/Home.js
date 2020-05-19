@@ -1,14 +1,14 @@
 import React, {useCallback, useContext, useState} from 'react';
-import {Grid, Typography} from "@material-ui/core";
-import ExpandMore from '../button/ExpandMore';
+import {Button, Grid, Typography} from "@material-ui/core";
+import ExpandMore from '../ExpandMoreButton';
 import icon from '../../asset/icons/home.svg';
 import router from "../../contants/router";
-import InfoIcon from "../button/InfoIcon";
-import SquareBtn from "../button/SquareBtn";
-import {useHistory} from "react-router-dom";
+import InfoIcon from "../InfoIcon";
+import {Link, useHistory} from "react-router-dom";
 import Slide from '@material-ui/core/Slide';
 import useStyles from './home.style';
 import {Context} from "../../context";
+
 
 function Home() {
   const classes = useStyles();
@@ -49,7 +49,14 @@ function Home() {
 
         <Slide timeout={1000} direction={'up'} in={inOrOut} mountOnEnter unmountOnExit>
           <Grid item>
-            <SquareBtn label={"关于我"} to={router.ABOUT}/>
+            <Button
+              component={Link}
+              to={router.ABOUT}
+              className={classes.aboutButton}
+              variant="contained"
+            >
+              关于我
+            </Button>
           </Grid>
         </Slide>
         {

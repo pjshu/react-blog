@@ -3,6 +3,7 @@ import bg from "../../asset/icons/articleBg.png";
 
 export default makeStyles(theme => ({
   root: {
+    wordBreak: 'break-word',
     padding: '65px 45px 45px 45px',
     marginTop: -400,
     minHeight: 800,

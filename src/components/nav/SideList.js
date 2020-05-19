@@ -27,7 +27,12 @@ const SideList = ({toggleDrawer}) => {
               component={Link}
               to={item.router}
               key={item.primary}>
-              <ListItemText primary={item.primary}/>
+              <ListItemText
+                primary={item.primary}
+                classes={{
+                  primary: classes.font
+                }}
+              />
             </ListItem>
           ))
         }

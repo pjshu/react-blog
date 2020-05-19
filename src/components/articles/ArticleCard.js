@@ -1,16 +1,17 @@
 import useEditorStyle from "../../style/output.style";
 import React, {useState, useCallback} from "react";
-import {Chip, Grid, Typography} from "@material-ui/core";
+import {Chip, Grid, Typography, useMediaQuery, useTheme, Button} from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import {formatTime} from "../../helpers/datetime";
 import {combineClassName} from "../../helpers/style";
-import UnderlineBtn from "../button/UnderlineBtn";
 import router from "../../contants/router";
 import useStyles from './articleCard.style';
-
+import {Link} from "react-router-dom";
 
 function ArticleCard(props) {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.only('xs'), {noSsr: true});
   const classes = useStyles();
   const editorCSS = useEditorStyle();
   const [hover, setHover] = useState(false);
@@ -34,7 +35,7 @@ function ArticleCard(props) {
       <Paper
         onMouseEnter={handleOnMouseEnter}
         onMouseLeave={handleOnMouseLeave}
-        boxShadow={hover ? 1 : 6}
+        boxShadow={matches ? 1 : hover ? 1 : 6}
         component={Box}
         className={classes.paper}>
         <Typography
@@ -57,7 +58,8 @@ function ArticleCard(props) {
         </Grid>
 
         <Grid className={classes.tags}>
-          {props.tags  &&
+          {
+            props.tags &&
             props.tags.map(tag => (
               <Chip key={tag.id} label={tag.name} variant="outlined"/>
             ))
@@ -68,7 +70,15 @@ function ArticleCard(props) {
           dangerouslySetInnerHTML={{__html: props.excerpt}}
         />
         <Grid className={classes.buttonWrapper}>
-          <UnderlineBtn label={"阅读全文"} to={`${router.DETAIL}/${props.id}`}/>
+          <Button
+            component={Link}
+            variant="outlined"
+            className={classes.button}
+            to={`${router.DETAIL}/${props.id}`}
+
+          >
+            阅读全文
+          </Button>
         </Grid>
       </Paper>
     </Grid>

@@ -3,9 +3,9 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import {Grid, makeStyles} from "@material-ui/core";
-import {GITHUB, EMAIL, TWITTER} from "../../config/userinfo";
+import {GITHUB, EMAIL, TWITTER} from "../config/userinfo";
 import {CopyToClipboard} from "react-copy-to-clipboard";
-import {Context} from "../../context";
+import {Context} from "../context";
 
 
 const useStyle = makeStyles({

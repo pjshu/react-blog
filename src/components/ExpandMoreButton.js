@@ -39,7 +39,7 @@ const useStyle = makeStyles({
  * @param props.absolute 如果传入该属性,则按钮位于页面正下方中央
  * @param props.to 如果传入,按钮表现为Link,用于路由跳转
  */
-function ExpandMore({hidden = false, ...props}) {
+function ExpandMoreButton({hidden = false, ...props}) {
   const classes = useStyle(props.absolute);
 
   if (props.to) {
@@ -66,6 +66,6 @@ function ExpandMore({hidden = false, ...props}) {
   );
 }
 
-export default React.memo(ExpandMore, (pre, next) => {
+export default React.memo(ExpandMoreButton, (pre, next) => {
   return pre.hidden === next.hidden;
 });

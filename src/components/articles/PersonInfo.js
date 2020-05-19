@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {Avatar, List, ListItem} from "@material-ui/core";
-import InfoIcon from "../button/InfoIcon";
+import InfoIcon from "../InfoIcon";
 import useStyles from './personInfo.style';
 import {Context} from "../../context";
 import {Link} from 'react-router-dom';

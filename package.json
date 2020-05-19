@@ -1,6 +1,7 @@
 {
   "name": "react-blog",
   "version": "0.1.0",
+  "homepage": "/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.12",
@@ -23,7 +24,7 @@
     "react-hot-loader": "^4.12.20",
     "react-markdown": "^4.3.1",
     "react-on-screen": "^2.1.1",
-    "react-query": "^1.2.3",
+    "react-query": "^1.5.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.0",
     "react-spring": "^8.0.27",
