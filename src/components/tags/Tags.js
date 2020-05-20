@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container, Grid} from "@material-ui/core";
 import MediaCard from "./MediaCard";
-import ExpandMore from "../ExpandMoreButton";
+import ExpandMoreButton from "../ExpandMoreButton";
 import useStyles from './tags.style';
 
 
@@ -26,7 +26,7 @@ function Tags({tags, handleOnNextPage}) {
         }
       </Grid>
       <div className={classes.extendBtn}>
-        <ExpandMore
+        <ExpandMoreButton
           hidden={tags.bottom}
           onClick={handleOnNextPage}
         />

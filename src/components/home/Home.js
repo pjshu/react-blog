@@ -1,6 +1,6 @@
 import React, {useCallback, useContext, useState} from 'react';
 import {Button, Grid, Typography} from "@material-ui/core";
-import ExpandMore from '../ExpandMoreButton';
+import ExpandMoreButton from '../ExpandMoreButton';
 import icon from '../../asset/icons/home.svg';
 import router from "../../contants/router";
 import InfoIcon from "../InfoIcon";
@@ -61,7 +61,11 @@ function Home() {
         </Slide>
         {
           inOrOut && (
-            <ExpandMore absolute {...{to: router.ARTICLES}}/>
+            <ExpandMoreButton
+              component={Link}
+              to={router.ARTICLES}
+              className={classes.expendButton}
+            />
           )
         }
         <Grid className={classes.bgPic}>

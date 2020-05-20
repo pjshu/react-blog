@@ -81,7 +81,7 @@ function TreeNode({nodes}) {
 }
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     position: 'fixed',
     left: ({position: {x}}) => x,
@@ -109,13 +109,14 @@ const useStyles = makeStyles({
       return open ? '' : 'none';
     },
   },
-  icon: ({matches}) => matches ? {
-    display: 'none'
-  } : {
+  icon: {
     width: '100%',
     display: 'flex',
     justifyContent: 'center',
     color: '#D09FFE',
+    [theme.breakpoints.only("xs")]: {
+      display: 'none',
+    },
   },
   switch: {
     color: '#C186D6',
@@ -124,7 +125,7 @@ const useStyles = makeStyles({
     top: '50%',
     transform: 'translateY(-50%)',
   }
-});
+}));
 
 export default function TreeView({htmlString}) {
   const [position, setPosition] = useState(
@@ -135,7 +136,7 @@ export default function TreeView({htmlString}) {
   );
   const theme = useTheme();
   // 不加{noSsr:true} 参数导致matches 默认为false, 渲染一次后才为真正的matches
-  const matches = useMediaQuery(theme.breakpoints.down('xs'), {noSsr: true});
+  const matches = useMediaQuery(theme.breakpoints.only('xs'), {noSsr: true});
 
   const [open, setOpen] = useState(false);
 

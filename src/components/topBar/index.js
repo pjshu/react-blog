@@ -6,9 +6,10 @@ import {useQueryUserInfo} from "../../hooks";
 
 
 function TopBar() {
-  const theme = useTheme();
   useQueryUserInfo();
-  const matches = useMediaQuery(theme.breakpoints.only('xs'));
+  const theme = useTheme();
+  // 不加{noSsr:true} 参数导致matches 默认为false, 渲染一次后才为真正的matches
+  const matches = useMediaQuery(theme.breakpoints.only('xs'), {noSsr: true});
   return (
     <>
       {

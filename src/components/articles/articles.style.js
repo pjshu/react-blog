@@ -34,4 +34,7 @@ export default makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
   },
+  extendButton: {
+    marginTop: 40
+  }
 }));

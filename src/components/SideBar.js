@@ -34,7 +34,7 @@ function SideBar() {
   const {pathname} = useLocation();
   const classes = useStyle();
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('xs'));
+  const matches = useMediaQuery(theme.breakpoints.down('xs'), {noSsr: true});
 
   return (
     <>

@@ -1,7 +1,9 @@
 export const combineClassName = (...args) => {
   let className = '';
   args.forEach(name => {
-    className += `${name} `;
+    if (name) {
+      className += `${name} `;
+    }
   });
   return className;
 };

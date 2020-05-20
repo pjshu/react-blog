@@ -35,7 +35,7 @@ function ArticleCard(props) {
       <Paper
         onMouseEnter={handleOnMouseEnter}
         onMouseLeave={handleOnMouseLeave}
-        boxShadow={matches ? 1 : hover ? 1 : 6}
+        boxShadow={matches ? 2 : hover ? 1 : 6}
         component={Box}
         className={classes.paper}>
         <Typography

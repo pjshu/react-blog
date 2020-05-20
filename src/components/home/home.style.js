@@ -64,5 +64,11 @@ export default makeStyles(theme => ({
     color: '#fff',
     fontWeight: 'bold',
     background: 'linear-gradient(to right bottom, #CB88D2, #8E79E9)'
+  },
+  expendButton: {
+    position: 'absolute',
+    left: '50%',
+    bottom: 20,
+    transform: "translate(-50%, 0)",
   }
 }));

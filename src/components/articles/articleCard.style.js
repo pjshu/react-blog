@@ -13,15 +13,16 @@ export default makeStyles((theme) => ({
   paper: {
     borderRadius: 18,
     position: 'relative',
+    maxHeight: 600,
     [theme.breakpoints.up('sm')]: {
       padding: 50,
       // minHeight: 500,
-      maxHeight: 600,
       width: 750,
     },
     [theme.breakpoints.only('xs')]: {
       padding: 10,
       width: '100%',
+      borderRadius: 0,
     }
   },
   title: {
@@ -87,6 +88,9 @@ export default makeStyles((theme) => ({
     border: 0,
     [theme.breakpoints.only("xs")]: {
       fontSize: '15px',
+      background: 'linear-gradient(135deg, #CB88D2, #7F75EE)',
+      WebkitBackgroundClip: 'text',
+      color: 'transparent',
     },
     borderBottom: "3px solid rgb(212, 212, 212)",
     '&:hover': {

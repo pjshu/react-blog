@@ -1,14 +1,16 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Grid} from '@material-ui/core';
 import PersonInfo from './PersonInfo';
 import Tags from './Tags';
-import ExpandMore from '../ExpandMoreButton';
+import ExpandMoreButton from '../ExpandMoreButton';
 import ArticleCard from './ArticleCard';
 import useStyles from './articles.style';
-
+import {Context} from "../../context";
 
 function Articles({posts, handleOnNextPage}) {
   const classes = useStyles();
+  const [{posts: {rowsPerPage}}] = useContext(Context);
+
   return (
     <div className={classes.root}>
       <Grid
@@ -28,7 +30,11 @@ function Articles({posts, handleOnNextPage}) {
         </Grid>
       </Grid>
       <Grid className={classes.extendBtnWrapper}>
-        <ExpandMore hidden={posts.bottom} onClick={handleOnNextPage}/>
+        <ExpandMoreButton
+          className={classes.extendButton}
+          hidden={posts.bottom || posts.content.length < rowsPerPage}
+          onClick={handleOnNextPage}
+        />
       </Grid>
     </div>
   );
