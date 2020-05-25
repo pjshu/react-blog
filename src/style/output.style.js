@@ -9,6 +9,9 @@ export default makeStyles((theme) => ({
     fontFamily: 'Rubik-Regular-kern-latin',
     '& a': {
       wordBreak: 'break-word',
+    },
+    '& ul': {
+      marginLeft: 10
     }
   },
   emoji: {

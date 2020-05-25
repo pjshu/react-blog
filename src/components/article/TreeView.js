@@ -1,12 +1,11 @@
 import React, {useCallback, useEffect, useLayoutEffect, useMemo, useState} from "react";
-import {Box, makeStyles, useMediaQuery, useTheme} from "@material-ui/core";
+import {Box, useMediaQuery, useTheme} from "@material-ui/core";
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import PanToolIcon from '@material-ui/icons/PanTool';
 import Draggable from 'react-draggable';
+import useStyles, {treeViewMaxWidth} from './treeView.style';
 
-
-const treeViewMaxWidth = 250;
 
 const parseArticle = (article) => {
   const parseNode = (node) => {
@@ -80,52 +79,6 @@ function TreeNode({nodes}) {
   return <></>;
 }
 
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    position: 'fixed',
-    left: ({position: {x}}) => x,
-    top: ({position: {y}}) => y,
-    '& a': {
-      color: '#333333'
-    },
-    '& li': {
-      // listStyleType: 'disc'
-      listStyleType: 'none'
-    },
-    '& p': {
-      lineHeight: '10px',
-      whiteSpace: 'nowrap',
-    }
-  },
-  tree: {
-    borderRadius: 10,
-    padding: 15,
-    background: '#fff',
-    minWidth: 200,
-    maxWidth: treeViewMaxWidth,
-    overflow: 'auto',
-    display: ({open}) => {
-      return open ? '' : 'none';
-    },
-  },
-  icon: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    color: '#D09FFE',
-    [theme.breakpoints.only("xs")]: {
-      display: 'none',
-    },
-  },
-  switch: {
-    color: '#C186D6',
-    position: 'fixed',
-    right: 10,
-    top: '50%',
-    transform: 'translateY(-50%)',
-  }
-}));
 
 export default function TreeView({htmlString}) {
   const [position, setPosition] = useState(
