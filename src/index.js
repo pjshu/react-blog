@@ -10,8 +10,11 @@ registerSentrySDK();
 //     trackAllPureComponents: true,
 //   });
 // }
+const root = document.getElementById('root');
 
-ReactDOM.createRoot(
-  document.getElementById('root')
-).render(<App/>);
+ReactDOM.render(<App/>, root);
+//
+// ReactDOM.unstable_createRoot(
+//   root
+// ).render(<App/>);
 

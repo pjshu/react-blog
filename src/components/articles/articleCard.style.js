@@ -16,8 +16,8 @@ export default makeStyles((theme) => ({
     maxHeight: 600,
     [theme.breakpoints.up('sm')]: {
       padding: 50,
+      width: '100%',
       // minHeight: 500,
-      width: 750,
     },
     [theme.breakpoints.only('xs')]: {
       padding: 10,

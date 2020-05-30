@@ -1,4 +1,5 @@
 import React from "react";
+import useMethods from "use-methods";
 
 
 export const defaultValue = {
@@ -78,3 +79,11 @@ export const methods = (state) => ({
 });
 
 
+export default React.memo(function Provider({children}) {
+  const [state, dispatch] = useMethods(methods, defaultValue);
+  return (
+    <Context.Provider value={[state, dispatch]}>
+      {children}
+    </Context.Provider>
+  );
+});

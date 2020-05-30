@@ -27,15 +27,6 @@ export default function StyleAppBar() {
         pathname: router.ARTICLES,
         search: `?search=${filterStr(e.target.value)}`
       });
-      // axios.get(api.search, {
-      //   params: {
-      //     search: e.target.value
-      //   }
-      // }).then(res => {
-      //   console.log(res);
-      // }).then(error => {
-      //
-      // });
     }
   };
   return (

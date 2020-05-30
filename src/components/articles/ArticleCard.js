@@ -75,7 +75,6 @@ function ArticleCard(props) {
             variant="outlined"
             className={classes.button}
             to={`${router.DETAIL}/${props.id}`}
-
           >
             阅读全文
           </Button>

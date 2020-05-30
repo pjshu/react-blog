@@ -1,6 +1,4 @@
 import {makeStyles} from "@material-ui/core";
-// import square from "*.svg";
-// import triangle from "*.svg";
 import square from '../../asset/icons/square.svg';
 import triangle from '../../asset/icons/triangle.svg';
 

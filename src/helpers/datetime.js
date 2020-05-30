@@ -1,5 +1,5 @@
 const formatTime = (d, accuracy = 'minutes') => {
-  d = new Date(d);
+  d = new Date(d * 1000);
   const year = d.getFullYear();
   const month = d.getMonth() + 1;
   const date = d.getDate();

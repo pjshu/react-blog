@@ -24,8 +24,8 @@ export default makeStyles((theme) => ({
     backgroundSize: '150px, 200px, 150px, 100px, 150px, 200px',
   },
   personInfo: {
-    marginLeft: '40px',
-    [theme.breakpoints.down("sm")]: {
+    marginLeft: 80,
+    [theme.breakpoints.down("md")]: {
       display: 'none'
     },
   },

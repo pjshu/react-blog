@@ -16,8 +16,9 @@ function Articles({posts, handleOnNextPage}) {
       <Grid
         container
         direction={"row"}
-        justify={"center"}>
-        <Grid item xl={6} lg={7} md={8} sm={10} xs={12}>
+        justify={"center"}
+      >
+        <Grid item xl={5} lg={6} md={8} sm={10} xs={12}>
           {
             posts.content.map((item) => (
               <ArticleCard key={item.id} {...item}/>

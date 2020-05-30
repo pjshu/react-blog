@@ -16,7 +16,7 @@ const ColorTag = React.memo(function ColorTag(props) {
       pathname: router.ARTICLES,
       search: `?tid=${id}`
     });
-  }, [history]);
+  }, [history, id]);
 
   return (<div
     className={classes.root}

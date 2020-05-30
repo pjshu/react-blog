@@ -5,10 +5,8 @@ import SideBar from "./components/SideBar";
 import TopBar from "./components/topBar";
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Footer from "./components/footer";
-import {Context, defaultValue, methods} from './context';
+import Provider from './context';
 import {hot} from 'react-hot-loader';
-import PortalMessage from './components/Message';
-import useMethods from 'use-methods';
 import ErrorBoundary from './components/ErrorBoundaries';
 import Loading from "./components/Loading";
 import {ReactQueryConfigProvider} from 'react-query';
@@ -20,48 +18,41 @@ const Articles = React.lazy(() => import('./components/articles'));
 const Tags = React.lazy(() => import('./components/tags'));
 const About = React.lazy(() => import('./components/about'));
 const Home = React.lazy(() => import('./components/home/Home'));
+const PortalMessage = React.lazy(() => import('./components/Message'))
 
 const queryConfig = {
-  //react-query bug
   suspense: true,
   refetchOnWindowFocus: false,
 };
 
 const App = React.memo(function App() {
-  const [state, dispatch] = useMethods(methods, defaultValue);
   return (
     <ErrorBoundary>
       <React.Suspense fallback={<Loading/>}>
         <ReactQueryConfigProvider config={queryConfig}>
-          <Context.Provider value={[state, dispatch]}>
-            <ContextApp/>
-          </Context.Provider>
+          <Provider>
+            <Router>
+              <CssBaseline/>
+              <TopBar/>
+              <SideBar/>
+              <Switch>
+                <Route path={router.HOME} exact><Home/></Route>
+                <Route>
+                  <Switch>
+                    <Route path={router.TAG}><Tags/></Route>
+                    <Route path={router.ABOUT}><About/></Route>
+                    <Route path={`${router.DETAIL}/:id`}><Article/></Route>
+                    <Route path={router.ARTICLES} exact><Articles/></Route>
+                  </Switch>
+                  <PortalMessage/>
+                </Route>
+              </Switch>
+              <Footer/>
+            </Router>
+          </Provider>
         </ReactQueryConfigProvider>
       </React.Suspense>
     </ErrorBoundary>
-  );
-});
-
-const ContextApp = React.memo(function ContextApp() {
-  return (
-    <Router>
-      <CssBaseline/>
-      <TopBar/>
-      <SideBar/>
-      <Switch>
-        <Route path={router.HOME} exact><Home/></Route>
-        <Route>
-          <Switch>
-            <Route path={router.TAG}><Tags/></Route>
-            <Route path={router.ABOUT}><About/></Route>
-            <Route path={`${router.DETAIL}/:id`}><Article/></Route>
-            <Route path={router.ARTICLES} exact><Articles/></Route>
-          </Switch>
-        </Route>
-      </Switch>
-      <PortalMessage/>
-      <Footer/>
-    </Router>
   );
 });
 

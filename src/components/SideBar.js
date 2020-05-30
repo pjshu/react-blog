@@ -7,7 +7,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {useTheme} from '@material-ui/core/styles';
 
 
-const useStyle = makeStyles(theme => ({
+const useStyle = makeStyles({
   root: {
     zIndex: '10',
     height: '400px',
@@ -28,7 +28,7 @@ const useStyle = makeStyles(theme => ({
   icon: {
     fontSize: 25
   },
-}));
+});
 
 function SideBar() {
   const {pathname} = useLocation();
@@ -55,7 +55,8 @@ function SideBar() {
                   key={item.title}
                   to={item.router}
                   component={Link}
-                  title={item.title}>
+                  title={item.title}
+                >
                   <AdjustIcon className={classes.icon}/>
                 </Grid>
               ))
