@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Grid,
   Toolbar,
   AppBar,
   useTheme,
@@ -50,14 +49,13 @@ export default function StyleAppBar() {
             {'router': router.TAG, title: '标签'},
             {'router': router.ABOUT, title: '关于'}
           ].map((item) => (
-            <Grid
+            <Link
               key={item.title}
-              component={Link}
               to={item.router}
               className={classes.navItem}
             >
               {item.title}
-            </Grid>
+            </Link>
           ))
         }
       </Toolbar>

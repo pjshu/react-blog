@@ -30,13 +30,13 @@ function Articles({posts, handleOnNextPage}) {
           <Tags/>
         </Grid>
       </Grid>
-      <Grid className={classes.extendBtnWrapper}>
+      <div className={classes.extendBtnWrapper}>
         <ExpandMoreButton
           className={classes.extendButton}
           hidden={posts.bottom || posts.content.length < rowsPerPage}
           onClick={handleOnNextPage}
         />
-      </Grid>
+      </div>
     </div>
   );
 }

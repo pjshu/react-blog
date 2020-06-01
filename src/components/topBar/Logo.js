@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from "../../asset/icons/logo.svg";
-import {Grid, makeStyles} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core";
 import router from '../../contants/router';
 import {Link} from 'react-router-dom';
 
@@ -22,9 +22,9 @@ const useStyle = makeStyles(theme => ({
 function Logo() {
   const classes = useStyle();
   return (
-    <Grid className={classes.logo} component={Link} to={router.HOME}>
+    <Link className={classes.logo} to={router.HOME}>
       <img src={logo} alt=""/>
-    </Grid>
+    </Link>
   );
 }
 

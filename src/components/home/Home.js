@@ -26,7 +26,7 @@ function Home() {
   }, [history]);
 
   return (
-    <Grid onWheel={handleOnWheel} className={classes.root}>
+    <div onWheel={handleOnWheel} className={classes.root}>
       <Grid container spacing={3} className={classes.infoWrapper}>
         <Slide timeout={1000} direction={'down'} in={inOrOut} mountOnEnter unmountOnExit>
           <Grid item className={classes.info}>
@@ -68,13 +68,13 @@ function Home() {
             />
           )
         }
-        <Grid className={classes.bgPic}>
+        <div className={classes.bgPic}>
           <Slide timeout={1000} direction={'down'} in={inOrOut} mountOnEnter unmountOnExit>
             <img src={icon} alt=""/>
           </Slide>
-        </Grid>
+        </div>
       </Grid>
-    </Grid>
+    </div>
   );
 }
 

@@ -23,7 +23,7 @@ function Detail(post) {
             {post.title}
           </Typography>
         </div>
-        <Grid className={classes.articleInfo}>
+        <div className={classes.articleInfo}>
           <Typography
             className={classes.create_time}
             variant={'body1'}
@@ -37,7 +37,7 @@ function Detail(post) {
           >
             {post.comments}评论
           </Typography>
-        </Grid>
+        </div>
         <Grid item>
           {
             post.article ? (

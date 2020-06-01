@@ -1,7 +1,7 @@
 import React from 'react';
 import AdjustIcon from '@material-ui/icons/Adjust';
 import {Link, useLocation} from 'react-router-dom';
-import {Grid, makeStyles} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core";
 import router from '../contants/router';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {useTheme} from '@material-ui/core/styles';
@@ -36,34 +36,28 @@ function SideBar() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('xs'), {noSsr: true});
 
-  return (
-    <>
+  return !matches && (
+    <div className={classes.root}>
       {
-        matches ? null :
-          <div className={classes.root}>
-            {
-              [
-                {title: 'Home', router: router.HOME},
-                {title: 'Article', router: router.ARTICLES},
-                {title: 'Tags', router: router.TAG},
-                {title: 'About', router: router.ABOUT},
-              ].map(item => (
-                <Grid
-                  style={{
-                    color: pathname === item.router ? '#9462E4' : ''
-                  }}
-                  key={item.title}
-                  to={item.router}
-                  component={Link}
-                  title={item.title}
-                >
-                  <AdjustIcon className={classes.icon}/>
-                </Grid>
-              ))
-            }
-          </div>
+        [
+          {title: 'Home', router: router.HOME},
+          {title: 'Article', router: router.ARTICLES},
+          {title: 'Tags', router: router.TAG},
+          {title: 'About', router: router.ABOUT},
+        ].map(item => (
+          <Link
+            style={{
+              color: pathname === item.router ? '#9462E4' : ''
+            }}
+            key={item.title}
+            to={item.router}
+            title={item.title}
+          >
+            <AdjustIcon className={classes.icon}/>
+          </Link>
+        ))
       }
-    </>
+    </div>
   );
 }
 

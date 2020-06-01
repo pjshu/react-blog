@@ -45,7 +45,7 @@ function ArticleCard(props) {
         >
           {props.title}
         </Typography>
-        <Grid className={classes.articleInfo}>
+        <div className={classes.articleInfo}>
           <Typography
             component="h2"
             align="left"
@@ -55,21 +55,21 @@ function ArticleCard(props) {
           <Typography>
             {props.comments}评论
           </Typography>
-        </Grid>
+        </div>
 
-        <Grid className={classes.tags}>
+        <div className={classes.tags}>
           {
             props.tags &&
             props.tags.map(tag => (
               <Chip key={tag.id} label={tag.name} variant="outlined"/>
             ))
           }
-        </Grid>
+        </div>
         <div
           className={combineClassName(editorCSS.root, classes.article, editorCSS.emoji)}
           dangerouslySetInnerHTML={{__html: props.excerpt}}
         />
-        <Grid className={classes.buttonWrapper}>
+        <div className={classes.buttonWrapper}>
           <Button
             component={Link}
             variant="outlined"
@@ -78,7 +78,7 @@ function ArticleCard(props) {
           >
             阅读全文
           </Button>
-        </Grid>
+        </div>
       </Paper>
     </Grid>
   );
