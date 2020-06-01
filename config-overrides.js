@@ -7,7 +7,7 @@ module.exports = function override(config, env) {
     ...config.resolve.alias,
     'react-dom@experimental': '@hot-loader/react-dom',
   };
-
+  console.log(config)
   config.optimization = {
     ...config.optimization,
     splitChunks: {
