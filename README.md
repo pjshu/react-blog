@@ -1,6 +1,18 @@
-未完成
 
-TODO:
-- 标签刷新动画
-- 刷新按钮点击旋转
-- 标签刷新功能
+## 使用
+```bash
+# yarn
+yarn  && yarn build
+# npm
+npm install && npm run build
+```
+
+## api
+ 
+
+你可能需要:
+## 后端
+- https://github.com/pjshu/flask-blog
+## 后台管理面板
+- https://github.com/pjshu/react-admin
+
