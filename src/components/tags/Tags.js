@@ -37,6 +37,7 @@ function Tags({tags, handleOnNextPage}) {
 
 export default React.memo(Tags, (pre, next) => {
   return pre.handleOnNextPage === next.handleOnNextPage &&
-    pre.tags.content.length === next.tags.content.length;
+    pre.tags.content.length === next.tags.content.length &&
+    pre.tags.bottom === next.tags.bottom;
 });
 

@@ -18,11 +18,12 @@ const Articles = React.lazy(() => import('./components/articles'));
 const Tags = React.lazy(() => import('./components/tags'));
 const About = React.lazy(() => import('./components/about'));
 const Home = React.lazy(() => import('./components/home/Home'));
-const PortalMessage = React.lazy(() => import('./components/Message'))
+const PortalMessage = React.lazy(() => import('./components/Message'));
 
 const queryConfig = {
   suspense: true,
   refetchOnWindowFocus: false,
+  staleTime: 5 * 60 * 1000
 };
 
 const App = React.memo(function App() {

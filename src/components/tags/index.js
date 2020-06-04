@@ -1,10 +1,10 @@
 import React from 'react';
 import Tags from './Tags';
-import {useQueryTags} from "../../hooks";
+import {usePagingTags} from "../../hooks";
 
 function TagsWrapper() {
-  const {tags, handleOnNextPage} = useQueryTags();
-
+  const {tags, handleOnNextPage} = usePagingTags();
+  console.log(tags.bottom);
   return (
     <Tags {...{handleOnNextPage, tags}}/>
   );

@@ -2,7 +2,7 @@ import React, {useCallback, useMemo} from 'react';
 import {Grid} from "@material-ui/core";
 import CachedIcon from '@material-ui/icons/Cached';
 import useStyles from './tags.style';
-import {useQueryTags} from "../../hooks";
+import {usePagingTags} from "../../hooks";
 import {useHistory} from "react-router-dom";
 import router from "../../contants/router";
 
@@ -36,7 +36,7 @@ const ColorTag = React.memo(function ColorTag(props) {
 
 export function Tags() {
   const classes = useStyles();
-  const {tags: {content, rowsPerPage, bottom}, handleOnNextPage} = useQueryTags();
+  const {tags: {content, rowsPerPage, bottom}, handleOnNextPage} = usePagingTags();
 
   const currentTags = useMemo(() => {
     return content.slice(-rowsPerPage);

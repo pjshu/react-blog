@@ -7,8 +7,11 @@ export const defaultValue = {
     page: 0,
     content: [],
     bottom: false,
-    rowsPerPage: 8
+    rowsPerPage: 1,
+    // 记录已经抓取的页面
+    fetchedPage: []
   },
+  allTags: [],
   post: {
     id: '',
     article: '',
@@ -22,7 +25,8 @@ export const defaultValue = {
     page: 0,
     content: [],
     bottom: false,
-    rowsPerPage: 8
+    rowsPerPage: 1,
+    fetchedPage: [],
   },
   userInfo: {
     avatar: '',
@@ -46,26 +50,21 @@ export const defaultValue = {
 export const Context = React.createContext();
 
 export const methods = (state) => ({
-  combinePostsContent: (content) => {
-    state.posts.content = [...state.posts.content, ...content];
+  setContent: ({content, source}) => {
+    source = state[source];
+    source.content = [...source.content, ...content];
   },
-  setPostsContent: (data) => {
-    state.posts.content = [...data];
+  setBottom: (source) => {
+    state[source].bottom = true;
   },
-  setPostsBottom: () => {
-    state.posts.bottom = true;
+  setAllTags: (data) => {
+    state.allTags = data;
   },
-  incrementPostsPage: () => {
-    state.posts.page++;
+  incrementPage: (source) => {
+    state[source].page++;
   },
-  setTagsContent: (content) => {
-    state.tags.content = [...content];
-  },
-  setTagsBottom: () => {
-    state.tags.bottom = true;
-  },
-  incrementTagsPage: () => {
-    state.tags.page++;
+  setFetchedPage: (source) => {
+    state[source].fetchedPage = [...state[source].fetchedPage, state[source].page];
   },
   setPost: (data) => {
     state.post = {...state.post, ...data};
