@@ -27,7 +27,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.0",
     "react-use-gesture": "^7.0.5",
-    "serialize-javascript": "^3.0.0",
+    "serialize-javascript": "^3.1.0",
     "source-map-explorer": "^2.4.2",
     "update": "^0.7.4",
     "use-methods": "^0.5.1",
