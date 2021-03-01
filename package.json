@@ -64,6 +64,6 @@
     "lodash-es": "^4.17.15",
     "react-app-rewire-hot-loader": "^2.0.1",
     "react-app-rewired": "^2.1.5",
-    "three": "^0.114.0"
+    "three": "^0.125.0"
   }
 }
