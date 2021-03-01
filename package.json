@@ -16,7 +16,7 @@
     "draft-js-prism": "^1.0.6",
     "global": "^4.4.0",
     "npm-check-updates": "^4.0.4",
-    "prismjs": "^1.19.0",
+    "prismjs": "^1.23.0",
     "prop-types": "latest",
     "react": "^0.0.0-experimental-33c3af284",
     "react-copy-to-clipboard": "^5.0.2",
